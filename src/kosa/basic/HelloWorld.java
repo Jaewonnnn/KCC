@@ -3,7 +3,7 @@ package kosa.basic;
 public class HelloWorld {
 
 	public static void hello() {
-		System.out.println("¾È³ç!!!");
+		System.out.println("ì•ˆë…•!!!");
 	}
 
 	public static void main(String[] args) {

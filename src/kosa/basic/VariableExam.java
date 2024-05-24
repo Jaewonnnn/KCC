@@ -3,36 +3,36 @@ package kosa.basic;
 public class VariableExam {
 
 	public static void main(String[] args) {
-		// º¯¼ö´Â µ¥ÀÌÅÍ¸¦ ´ã´Â ±×¸© ex) È«±æµ¿ 100, 3.14, true
+		// ë³€ìˆ˜ëŠ” ë°ì´í„°ë¥¼ ë‹´ëŠ” ê·¸ë¦‡ ex) í™ê¸¸ë™ 100, 3.14, true
 		// byte, short, int, long, float, double, boolean, char
-		int num; // º¯¼ö ¼±¾ğ : ¸Ş¸ğ¸® ÇÒ´ç primitive type
-		int arr[]; // ¹è¿­ ¼±¾ğ : Object Type
+		int num; // ë³€ìˆ˜ ì„ ì–¸ : ë©”ëª¨ë¦¬ í• ë‹¹ primitive type
+		int arr[]; // ë°°ì—´ ì„ ì–¸ : Object Type
 		
 		num = 10;
-		System.out.println(num); // Áö¿ªº¯¼ö´Â ¹İµå½Ã ÃÊ±âÈ­¸¦ ÇØÁà¾ß ÇÑ´Ù.
+		System.out.println(num); // ì§€ì—­ë³€ìˆ˜ëŠ” ë°˜ë“œì‹œ ì´ˆê¸°í™”ë¥¼ í•´ì¤˜ì•¼ í•œë‹¤.
 		
-		int num2 = 100; // º¯¼ö ¼±¾ğ ¹× ÃÊ±âÈ­
+		int num2 = 100; // ë³€ìˆ˜ ì„ ì–¸ ë° ì´ˆê¸°í™”
 		
-		String name = "È«±æµ¿";
-		System.out.println(name + "´Ô");
+		String name = "í™ê¸¸ë™";
+		System.out.println(name + "ë‹˜");
 		
-		// º¯¼ö¼±¾ğ ÁÖÀÇ»çÇ×
-		// º¯¼ö¸í : Æ¯¼ö¹®ÀÚX, ¼ıÀÚ·Î ½ÃÀÛ X, ¼Ò¹®ÀÚ ½ÃÀÛ, _°¡´É
+		// ë³€ìˆ˜ì„ ì–¸ ì£¼ì˜ì‚¬í•­
+		// ë³€ìˆ˜ëª… : íŠ¹ìˆ˜ë¬¸ìX, ìˆ«ìë¡œ ì‹œì‘ X, ì†Œë¬¸ì ì‹œì‘, _ê°€ëŠ¥
 		
-		// ±âº» ¸®ÅÍ·² : 100 => int, "" => String, '' => char, true => boolean, 3.14 => double ´Â ÀÚµ¿À¸·Î µ¥ÀÌÅÍ Å¸ÀÔÀ» °¡Áö°í ÀÖ´Ù.
+		// ê¸°ë³¸ ë¦¬í„°ëŸ´ : 100 => int, "" => String, '' => char, true => boolean, 3.14 => double ëŠ” ìë™ìœ¼ë¡œ ë°ì´í„° íƒ€ì…ì„ ê°€ì§€ê³  ìˆë‹¤.
 		float a = 3.14f;
 		
-		// casting (Çüº¯È¯)
-		// ±âÁØ : byte < short < int < long < float < double ÀÛÀº °Í¿¡¼­ Å« °ÍÀ¸·Î Ä³½ºÆÃ °¡´É / int <=> char ¾Æ½ºÅ°ÄÚµå °ªÀ¸·Î Ä³½ºÆÃ °¡´É
-		double b = 100; // ±âº»¸®ÅÍ·²ÀÌ intÇüÀÎµ¥ double¿¡ Ä³½ºÆÃ °¡´É // ¾Ï¹¬Àû Çüº¯È¯
-		int c = (int)3.14; // °­Á¦ Çüº¯È¯ ÇÊ¿ä (¼Ò¼öÁ¡ Àß¸²), µ¥ÀÌÅÍÀÇ ¼Õ½ÇÀÌ ¹ß»ıÇÔ
+		// casting (í˜•ë³€í™˜)
+		// ê¸°ì¤€ : byte < short < int < long < float < double ì‘ì€ ê²ƒì—ì„œ í° ê²ƒìœ¼ë¡œ ìºìŠ¤íŒ… ê°€ëŠ¥ / int <=> char ì•„ìŠ¤í‚¤ì½”ë“œ ê°’ìœ¼ë¡œ ìºìŠ¤íŒ… ê°€ëŠ¥
+		double b = 100; // ê¸°ë³¸ë¦¬í„°ëŸ´ì´ intí˜•ì¸ë° doubleì— ìºìŠ¤íŒ… ê°€ëŠ¥ // ì•”ë¬µì  í˜•ë³€í™˜
+		int c = (int)3.14; // ê°•ì œ í˜•ë³€í™˜ í•„ìš” (ì†Œìˆ˜ì  ì˜ë¦¼), ë°ì´í„°ì˜ ì†ì‹¤ì´ ë°œìƒí•¨
 		
 		System.out.println(c);
 		
 		float num3 = 3.14f;
 		long num4 = 100l;
 		
-		int num5 = 010; // 8Áø¼ö°¡ µÊ 
+		int num5 = 010; // 8ì§„ìˆ˜ê°€ ë¨ 
 		System.out.println(num5);
 	}
 

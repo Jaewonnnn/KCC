@@ -5,29 +5,29 @@ import java.util.Scanner;
 public class VariableExam02 {
 
 	public static void main(String[] args) {
-		// Å°º¸µå·ÎºÎÅÍ µ¥ÀÌÅÍ ÀÔ·Â
+		// í‚¤ë³´ë“œë¡œë¶€í„° ë°ì´í„° ì…ë ¥
 		Scanner sc = new Scanner(System.in);
-//		System.out.print("Á¤¼ö ÀÔ·Â : ");
+//		System.out.print("ì •ìˆ˜ ì…ë ¥ : ");
 //		
-//		//1¹øÂ° ¹æ¹ı
+//		//1ë²ˆì§¸ ë°©ë²•
 //		int num = sc.nextInt(); // 10 + \n
 //		
-//		sc.nextLine(); // ¿£ÅÍ°¡ µé¾î°¡±â ¶§¹®
-//		System.out.println("¹®ÀÚ¿­ ÀÔ·Â : ");
+//		sc.nextLine(); // ì—”í„°ê°€ ë“¤ì–´ê°€ê¸° ë•Œë¬¸
+//		System.out.println("ë¬¸ìì—´ ì…ë ¥ : ");
 //		String str = sc.nextLine();
 //		
 //		System.out.println(num);
 //		
 //		System.out.println(str);	
 //		
-//		//2¹øÂ° ¹æ¹ı
-//		// ¹®ÀÚ¿­À» ¹Ş¾Æ¼­ Ã³¸®
+//		//2ë²ˆì§¸ ë°©ë²•
+//		// ë¬¸ìì—´ì„ ë°›ì•„ì„œ ì²˜ë¦¬
 //		// int num = Integer.parseInt(sc.nextLine());
 		
 		// int <==> char
 		char ch = 'A';
 		System.out.println((int)ch);
-		//A~Z for¹® ÀÌ¿ëÇÏ¿© ÀüÃ¼ Ãâ·Â
+		//A~Z forë¬¸ ì´ìš©í•˜ì—¬ ì „ì²´ ì¶œë ¥
 		for(int i = (int)'A'; i <= (int)'Z'; i++) {
 			System.out.print((char)i + " ");
 		}

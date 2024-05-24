@@ -6,23 +6,39 @@ public class Mission02 {
 	static final int COUNT = 3;
 
 	public static void main(String[] args) {
-		// ¼ºÀû°ü¸® ±¸Çö
-		// ±¹¾î, ¿µ¾î, ¼öÇÐ Á¡¼ö¸¦ Å°º¸µå·Î ºÎÅÍ ÀÔ·Â ¹Þ°í ÃÑÁ¡°ú Æò±ÕÀ» Ãâ·ÂÇÏ¼¼¿ä.
-		// ´Ü, Æò±ÕÀº ½Ç¼öÇü
+		// ì„±ì ê´€ë¦¬ êµ¬í˜„
+		// êµ­ì–´, ì˜ì–´, ìˆ˜í•™ ì ìˆ˜ë¥¼ í‚¤ë³´ë“œë¡œ ë¶€í„° ìž…ë ¥ ë°›ê³  ì´ì ê³¼ í‰ê· ì„ ì¶œë ¥í•˜ì„¸ìš”.
+		// ë‹¨, í‰ê· ì€ ì‹¤ìˆ˜í˜•
 		Scanner sc = new Scanner(System.in);
 		
-		System.out.print("±¹¾îÁ¡¼ö : ");
+		System.out.print("êµ­ì–´ì ìˆ˜ : ");
 		int korean = Integer.parseInt(sc.nextLine());
-		System.out.print("¿µ¾îÁ¡¼ö : ");
+		System.out.print("ì˜ì–´ì ìˆ˜ : ");
 		int eng = Integer.parseInt(sc.nextLine());
-		System.out.print("¼öÇÐÁ¡¼ö : ");
+		System.out.print("ìˆ˜í•™ì ìˆ˜ : ");
 		int math = Integer.parseInt(sc.nextLine());
 
 		int total = korean + eng + math;
 		int avg = (int)(total / COUNT);
 
-		System.out.println("ÃÑÁ¡ : " + total);
-		System.out.println("Æò±Õ : " + avg);
+		System.out.println("ì´ì  : " + total);
+		System.out.println("í‰ê·  : " + avg);
+		
+		
+		// 90ì´ìƒ ,=> Aí•™ì 
+		// 80ì´ìƒ => Bí•™ì 
+		// 70ì´ìƒ => Cí•™ì 
+		// 60ì´ìƒ => Dí•™ì 
+		// 60ì´í•˜ => Fí•™ì 
+		char grade = 'A';
+		if(avg >= 90 && avg <= 100) grade = 'A';
+		else if(avg <= 89 && avg >= 80) grade = 'B';
+		else if(avg <= 79 && avg >= 70) grade = 'C';
+		else if(avg <= 69 && avg >= 60) grade = 'D';
+		else grade = 'F';
+		
+		System.out.println(grade);
+		
 	}
 
 }

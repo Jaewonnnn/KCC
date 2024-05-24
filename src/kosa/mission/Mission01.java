@@ -3,14 +3,14 @@ package kosa.mission;
 public class Mission01 {
 
 	public static void main(String[] args) {
-		// ÀÌ¸§, ³ªÀÌ, ÁÖ¼Ò¸¦ º¯¼ö¿¡ °¢°¢ ´ã¾Æ¼­ ÄÜ¼Ö¿¡ Ãâ·ÂÇØ º¸ÀÚ
-		String name = "À¯Àç¿ø";
+		// ì´ë¦„, ë‚˜ì´, ì£¼ì†Œë¥¼ ë³€ìˆ˜ì— ê°ê° ë‹´ì•„ì„œ ì½˜ì†”ì— ì¶œë ¥í•´ ë³´ì
+		String name = "ìœ ì¬ì›";
 		int age = 28;
-		String address = "°æ±âµµ ºÎÃµ½Ã ¼Ò»ç±¸ °æÀÎ·Î";
+		String address = "ê²½ê¸°ë„ ë¶€ì²œì‹œ ì†Œì‚¬êµ¬ ê²½ì¸ë¡œ";
 
-		System.out.println("ÀÌ¸§ : " + name);
-		System.out.println("³ªÀÌ : " + age);
-		System.out.println("ÁÖ¼Ò : " + address);
+		System.out.println("ì´ë¦„ : " + name);
+		System.out.println("ë‚˜ì´ : " + age);
+		System.out.println("ì£¼ì†Œ : " + address);
 
 	}
 
