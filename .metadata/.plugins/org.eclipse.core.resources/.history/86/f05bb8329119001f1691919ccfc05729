@@ -1,0 +1,14 @@
+package kosa.basic;
+
+public class LoopExam02 {
+
+	public static void main(String[] args) {
+		// 중첩 for문
+		// 전체 구구단 출력
+		for(int i = 1; i <= 9; i++) {
+			System.out.println("2 * " + i + " =" + (2 * i));
+		}
+
+	}
+
+}

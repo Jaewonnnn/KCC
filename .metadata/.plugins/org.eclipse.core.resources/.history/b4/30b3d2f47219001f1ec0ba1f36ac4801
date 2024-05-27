@@ -1,0 +1,20 @@
+package kosa.mission;
+
+public class Mission04 {
+	public static void main(String[] agrs) {
+		// 문자열 비교
+		String a = "abc";
+		String b = "abc";
+		// String타입을 리터럴로 초기화 시 같은 문자열이 있으면 같은 주소를 참조
+//		if (a == b) {
+//			System.out.println("같다");
+//		}else {
+//			System.out.println("다르다");
+//		}
+		if(a.equals(b)) {
+			System.out.println("같다");
+		}else {
+			System.out.println("다르다");
+		}
+	}
+}
