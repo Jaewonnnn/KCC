@@ -7,38 +7,24 @@ public class Solution {
 	private List<Integer> solution = new ArrayList<>();
 
 	public Solution() {
-		for (int i = 0; i < 3; i++) {
+		while(solution.size() < 3){
 			int num = (int) ((Math.random() * 9)) + 1;
-			while (true) {
-				if (isOverlab(num)) {
-					solution.add(num);
-					break;
-				} else {
-					num = (int) ((Math.random() * 9)) + 1;
-				}
+			if (!solution.contains(num)) {
+				solution.add(num);
 			}
 		}
 		System.out.print(solution.toString());
-	}
-
-	public boolean isOverlab(int num) {
-		for (int i = 0; i < solution.size(); i++) {
-			if (solution.get(i) == num) {
-				return false;
-			}
-		}
-		return true;
 	}
 
 	public String checkCount(int[] input) {
 		int s = 0;
 		int b = 0;
 		xx: for (int i = 0; i < solution.size(); i++) {
-			for(int j = 0; j < solution.size();j++) {
-				if(solution.get(i) == input[i]) {
+			for (int j = 0; j < solution.size(); j++) {
+				if (solution.get(i) == input[i]) {
 					s++;
 					continue xx;
-				}else if(solution.get(i) == input[j]) {
+				} else if (solution.get(i) == input[j]) {
 					b++;
 					continue xx;
 				}
