@@ -34,6 +34,6 @@ public class Solution {
 		if (s == 3) {
 			return "3S";
 		} else
-			return "S" + s + "B" + b;
+			return s + "S" + b + "B";
 	}
 }

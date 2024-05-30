@@ -12,14 +12,13 @@ public class Main {
 		
 		int count = 1;
 		while(true) {
-			System.out.println("\n숫자 3자리 정답을 입력해주세요");
+			System.out.println("숫자 3자리 정답을 입력해주세요");
 			int num = sc.nextInt();
 			int idx = 2;
 			while(num > 0) {
 				input[idx--] = num % 10;
 				num /= 10;
 			}
-			System.out.println();
 			
 			String c = solution.checkCount(input);
 			if(c.equals("3S")) {
@@ -30,5 +29,6 @@ public class Main {
 			}
 			count++;
 		}
+		sc.close();
 	}
 }

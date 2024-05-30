@@ -11,7 +11,7 @@ public class PhoneBookMain {
 		xx :
 			while(true) {
 			
-			System.out.println("1.추가 2.전체출력 3.검색 4.종료");
+			System.out.println("1.추가 2.전체출력 3.검색 4.수정 5.삭제 6.종료");
 			System.out.print(">메뉴 : ");
 			
 			String menu = sc.nextLine();
@@ -36,6 +36,25 @@ public class PhoneBookMain {
 				manager.searchPhoneInfo(name);
 				continue;
 			case "4":
+				manager.listPhoneInfo();
+				System.out.println("수정 할 이름 입력");
+				name = sc.nextLine();
+				System.out.println("수정 할 항목 입력");
+				System.out.println("1.이름 2.전화번호 3.생년월일");
+				int num = Integer.parseInt(sc.nextLine());
+				System.out.println("수정 할 내용 입력");
+				String updateContent = sc.nextLine();
+				
+				manager.updatePhoneInfo(name, num, updateContent);
+				
+				continue;
+			case "5":
+				manager.listPhoneInfo();
+				System.out.println("삭제 할 이름 입력");
+				name = sc.nextLine();
+				manager.deletePhoneInfo(name);
+				continue;
+			case "6":
 				System.out.println("프로그램 종료");
 				break xx;
 			default :

@@ -40,4 +40,51 @@ public class Manager {
 			System.out.println("찾을 수 없음");
 		}
 	}
+
+	public void updatePhoneInfo(String name, int num, String updateContent) {
+		int buf = searchIndex(name);
+		
+		if(buf == -1) {
+			return;
+		}
+		
+		if(num==1) {
+			arr[buf].setName(updateContent);
+		}else if(num==2) {
+			arr[buf].setPhoneNo(updateContent);
+		}else if(num==3) {
+			arr[buf].setBirth(updateContent);
+		}else {
+			System.out.println("실패");
+		}	
+	}
+
+	public void deletePhoneInfo(String name) {
+		int buf = searchIndex(name);
+		if(buf == -1) {
+			return;
+		}else {
+			for(int i = buf; i < idx; i++) {
+				arr[i] = arr[i+1];
+			}
+			idx--;
+		}
+	}
+	public int searchIndex(String name) {
+		boolean flag = false;
+		int buf = 0;
+		for(int i = 0; i < idx; i++) {
+			if(arr[i].getName().equals(name)) {
+				buf = i;
+				flag = true;
+				break;
+			}
+		}
+		if(flag == false) {
+			System.out.println("이름을 찾을 수 없음");
+			return -1;
+		}else {
+			return buf;
+		}
+	}
 }
