@@ -5,34 +5,27 @@ import java.util.Scanner;
 public class PhoneBookMain {
 
 	public static void main(String[] args) {
-		
+
 		Manager manager = new Manager();
-		Scanner sc = new Scanner(System.in);
-		xx :
-			while(true) {
-			
+		
+		Scanner sc = DataInput.getInstance();
+		
+		xx: while (true) {
 			System.out.println("1.추가 2.전체출력 3.검색 4.수정 5.삭제 6.종료");
 			System.out.print(">메뉴 : ");
-			
+
 			String menu = sc.nextLine();
-			
-			switch(menu) {
+
+			switch (menu) {
 			case "1":
-				System.out.println("이름 : ");
-				String name = sc.nextLine();
-				System.out.println("전화번호 : ");
-				String phoneNo = sc.nextLine();
-				System.out.println("생년월일 : ");
-				String birth = sc.nextLine();
-				
-				manager.addPhoneInfo(name, phoneNo, birth);
+				manager.addPhoneInfo();
 				continue;
 			case "2":
 				manager.listPhoneInfo();
 				continue;
 			case "3":
 				System.out.println("검색 이름 : ");
-				name = sc.nextLine();
+				String name = sc.nextLine();
 				manager.searchPhoneInfo(name);
 				continue;
 			case "4":
@@ -44,9 +37,9 @@ public class PhoneBookMain {
 				int num = Integer.parseInt(sc.nextLine());
 				System.out.println("수정 할 내용 입력");
 				String updateContent = sc.nextLine();
-				
+
 				manager.updatePhoneInfo(name, num, updateContent);
-				
+
 				continue;
 			case "5":
 				manager.listPhoneInfo();
@@ -57,8 +50,8 @@ public class PhoneBookMain {
 			case "6":
 				System.out.println("프로그램 종료");
 				break xx;
-			default :
-				System.out.println("다시 입력하세요");	
+			default:
+				System.out.println("다시 입력하세요");
 			}
 		}
 		sc.close();
