@@ -25,10 +25,11 @@ public class Main {
 				shoppringMall.signUp();
 				break;
 			case "3":
+				System.out.println("====================================");
+				System.out.println("프로그램 종료");
+				System.out.println("====================================");
 				return;
 			}
 		}
-
 	}
-
 }

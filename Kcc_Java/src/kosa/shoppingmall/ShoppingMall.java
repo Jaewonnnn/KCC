@@ -25,7 +25,7 @@ public class ShoppingMall {
 	public void userStart() throws IOException {
 		while (true) {
 			System.out.println("1.상품 보기 2.상품 주문하기 3.장바구니 추가하기 4.장바구니 삭제하기 5.장바구니 보기");
-			System.out.println("6.구매 기록 보기 7.회원 정보 수정 8.회원 탈퇴");
+			System.out.println("6.구매 기록 보기 7.회원 정보 수정 8.회원 탈퇴 9.로그아웃");
 			String num = br.readLine();
 			switch (num) {
 			case "1":
@@ -50,22 +50,24 @@ public class ShoppingMall {
 				}
 				break;
 			case "3":
-				System.out.println("장바구니에 추가 할 상품 번호를 입력하세요 : ");
 				printProduct();
+				System.out.println("장바구니에 추가 할 상품 번호를 입력하세요 : ");
 				int productNum = Integer.parseInt(br.readLine());
 				if (productNum > productList.size()) {
 					System.out.println("등록 실패!");
 				} else {
 					p.setBasket(findProduct(productNum));
+					System.out.println("====================================");
 					System.out.println(p.getBasket().getBasket().get(p.getBasket().getBasket().size() - 1).getName()
 							+ " 장바구니 등록 완료");
 				}
+				System.out.println("====================================");
 				break;
 			case "4":
-				System.out.println("장바구니에서 삭제 할 상품 번호를 입력하세요 : ");
 				printBasketList();
+				System.out.println("장바구니에서 삭제 할 상품 번호를 입력하세요 : ");
 				int idx = Integer.parseInt(br.readLine());
-				if (idx > productList.size()) {
+				if (idx > p.getBasket().getBasket().size()) {
 					System.out.println("삭제 실패!");
 				} else {
 					System.out.println(p.getBasket().getBasket().get(idx - 1).getName() + " 삭제 완료");
@@ -98,10 +100,17 @@ public class ShoppingMall {
 				}
 				break;
 			case "8":
+				System.out.println("====================================");
 				System.out.println(deletePerson(p) + "님 회원 탈퇴 완료");
-				System.out.println("프로그램 종료");
+				System.out.println("====================================");
+				return;
+			case "9":
+				System.out.println("====================================");
+				System.out.println("로그아웃");
+				System.out.println("====================================");
 				return;
 			}
+
 		}
 	}
 
@@ -125,7 +134,7 @@ public class ShoppingMall {
 
 	public void adminStart() throws IOException {
 		while (true) {
-			System.out.println("1.상품 등록 2.상품 전체 조회 3.상품 삭제 4.종료");
+			System.out.println("1.상품 등록 2.상품 전체 조회 3.상품 삭제 4.고객 정보 조회 5.로그아웃");
 			String num = br.readLine();
 			switch (num) {
 			case "1":
@@ -153,7 +162,12 @@ public class ShoppingMall {
 				}
 				break;
 			case "4":
-				System.out.println("프로그램 종료");
+				printPersonList();
+				break;
+			case "5":
+				System.out.println("====================================");
+				System.out.println("로그아웃");
+				System.out.println("====================================");
 				return;
 			}
 		}
@@ -167,6 +181,19 @@ public class ShoppingMall {
 			}
 		}
 		return "";
+	}
+
+	public void printPersonList() {
+		System.out.println("====================================");
+		if (personList.size() == 1) {
+			System.out.println("유저가 없습니다");
+		} else {
+			System.out.println("번호\t이름\t주소");
+			for (int i = 1; i < personList.size(); i++) {
+				System.out.println(i + "\t" + personList.get(i).getName() + "\t" + personList.get(i).getAddress());
+			}
+		}
+		System.out.println("====================================");
 	}
 
 	public void printOrderList() {
@@ -190,6 +217,7 @@ public class ShoppingMall {
 
 	public void printBasketList() {
 		if (p.getBasket().getBasket().size() == 0) {
+			System.out.println("====================================");
 			System.out.println("장바구니가 비어있습니다.");
 		} else {
 			System.out.println("====================================");
@@ -200,8 +228,8 @@ public class ShoppingMall {
 						+ p.getBasket().getBasket().get(i).getName() + "\t"
 						+ p.getBasket().getBasket().get(i).getPrice());
 			}
-			System.out.println("====================================");
 		}
+		System.out.println("====================================");
 	}
 
 	public void printProduct(String category) {
@@ -224,6 +252,7 @@ public class ShoppingMall {
 		System.out.print("주소를 입력해주세요 : ");
 		String address = br.readLine();
 		personList.add(new Person(name, address));
+		System.out.println("====================================");
 		System.out.println(personList.get(personList.size() - 1).getName() + "님 회원가입 완료");
 		System.out.println("====================================");
 	}
@@ -231,18 +260,30 @@ public class ShoppingMall {
 	public Person signIn() throws IOException {
 		System.out.print("이름을 입력해주세요 : ");
 		String name = br.readLine();
-		findIndex(name);
-		System.out.println(p.getName() + "님 환영합니다");
-		System.out.println("====================================");
-		return p;
+		if (findIndex(name)) {
+			System.out.println("====================================");
+			System.out.println(p.getName() + "님 환영합니다");
+			System.out.println("====================================");
+			return p;
+		}
+		else {
+			System.out.println("====================================");
+			System.out.println("로그인 실패!");
+			System.out.println("====================================");
+			return new Person();
+		}
 	}
 
-	public void findIndex(String name) {
+	public boolean findIndex(String name) {
+		boolean flag = false;
 		for (int i = 0; i < personList.size(); i++) {
 			if (personList.get(i).getName().equals(name)) {
 				p = personList.get(i);
+				return true;
 			}
 		}
+
+		return false;
 	}
 
 	public void insertProduct() throws IOException {
