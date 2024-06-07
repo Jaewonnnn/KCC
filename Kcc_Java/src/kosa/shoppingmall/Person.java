@@ -14,7 +14,6 @@ public class Person {
 	}
 
 	public Person(String name) {
-
 		this.name = name;
 		this.role = Role.ADMIN;
 
@@ -55,17 +54,12 @@ public class Person {
 		orderList.add(order);
 	}
 
-
 	public Basket getBasket() {
 		return basket;
 	}
 
 	public void setBasket(Product p) {
 		basket.setBasket(p);
-	}
-
-	public void setOrderList(List<Order> orderList) {
-		this.orderList = orderList;
 	}
 
 	public Role getRole() {
@@ -76,6 +70,4 @@ public class Person {
 		this.role = role;
 	}
 	
-	
-
 }

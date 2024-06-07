@@ -7,7 +7,7 @@ public class Order {
 	public Order() {}
 	
 	public Order(String name) {
-		orderNumber = (int)(Math.random() * 210000000) + 1;
+		orderNumber = (int)(Math.random() * (210000000 - 10000000)) + 10000000;
 		productName = name;
 	}
 
