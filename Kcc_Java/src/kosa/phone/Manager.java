@@ -1,5 +1,7 @@
 package kosa.phone;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
@@ -7,9 +9,6 @@ import java.util.Scanner;
 //전화번호 관리와 관련된 전반적인 기능
 public class Manager {
 	private List<PhoneInfo> list = new LinkedList<>();
-//	private PhoneInfo[] arr = new PhoneInfo[10];
-	private int idx;
-
 	Scanner sc = DataInput.getInstance();
 
 	public Manager() {
@@ -31,15 +30,13 @@ public class Manager {
 		switch (type) {
 		case "1":
 			list.add(new PhoneInfo(name, phoneNo, birth));
-//			arr[idx++] = new PhoneInfo(name, phoneNo, birth);
 			break;
 		case "2":
 			System.out.println("부서 : ");
 			String dept = sc.nextLine();
 			System.out.println("직책 : ");
-			String position = sc.nextLine(); 
+			String position = sc.nextLine();
 			list.add(new Company(name, phoneNo, birth, dept, position));
-//			arr[idx++] = new Company(name, phoneNo, birth, dept, position);
 			break;
 		case "3":
 			System.out.println("전공 : ");
@@ -47,7 +44,6 @@ public class Manager {
 			System.out.println("학번 : ");
 			String year = sc.nextLine();
 			list.add(new Universe(name, phoneNo, birth, major, year));
-//			arr[idx++] = new Universe(name, phoneNo, birth, major, year);
 			break;
 		}
 	}
@@ -98,7 +94,7 @@ public class Manager {
 	}
 
 	public void searchPhoneInfo(String name) {
-		boolean flag = false;		
+		boolean flag = false;
 		for (int i = 0; i < list.size(); i++) {
 			if ((list.get(i).getName()).equals(name)) {
 				printAllList(i);
@@ -118,13 +114,10 @@ public class Manager {
 
 		if (num == 1) {
 			list.get(buf).setName(updateContent);
-//			arr[buf].setName(updateContent);
 		} else if (num == 2) {
 			list.get(buf).setPhoneNo(updateContent);
-//			arr[buf].setPhoneNo(updateContent);
 		} else if (num == 3) {
 			list.get(buf).setBirth(updateContent);
-//			arr[buf].setBirth(updateContent);
 		} else {
 			System.out.println("실패");
 		}
@@ -133,16 +126,6 @@ public class Manager {
 	public void deletePhoneInfo(String name) {
 		int buf = searchIndex(name);
 		list.remove(buf);
-//		if (buf == -1) {
-//			return;
-//		} else {
-//			for (int i = buf; i < idx; i++) {
-//				if (i == arr.length - 1) {
-//					arr[i] = null;
-//				} else
-//					arr[i] = arr[i + 1];
-//			}
-//			idx--;
 	}
 
 	public int searchIndex(String name) {
@@ -160,6 +143,55 @@ public class Manager {
 			return -1;
 		} else {
 			return buf;
+		}
+	}
+
+	public void sortList() {
+		System.out.println("오름차순 1.이름순 2.전화번호순 3.생년월일순");
+		System.out.println("내림차순 4.이름순 5.전화번호순 6.생년월일순");
+		String num = sc.nextLine();
+		switch (num) {
+		case "1":
+			Collections.sort(list);
+			break;
+		case "2":
+			Collections.sort(list, new Comparator<PhoneInfo>() {
+				@Override
+				public int compare(PhoneInfo o1, PhoneInfo o2) {
+
+					return o1.getPhoneNo().compareTo(o2.getPhoneNo());
+				}
+			});
+			break;
+		case "3":
+			Collections.sort(list, new Comparator<PhoneInfo>() {
+				@Override
+				public int compare(PhoneInfo o1, PhoneInfo o2) {
+					return Integer.compare(Integer.parseInt(o1.getBirth()), Integer.parseInt(o2.getBirth()));
+				}
+			});
+			break;
+		case "4":
+			Collections.sort(list, new Comparator<PhoneInfo>() {
+				@Override
+				public int compare(PhoneInfo o1, PhoneInfo o2) {
+					return o2.getName().compareTo(o1.getName());
+				}
+			});
+			break;
+		case "5":
+			Collections.sort(list, new Comparator<PhoneInfo>() {
+				@Override
+				public int compare(PhoneInfo o1, PhoneInfo o2) {
+					return o2.getPhoneNo().compareTo(o1.getPhoneNo());
+				}
+			});
+			break;
+		case "6":
+			Collections.sort(list, (o1, o2) -> Integer.compare(Integer.parseInt(o2.getBirth()), Integer.parseInt(o1.getBirth())));
+			break;
+		default:
+			System.out.println("다시 입력");
 		}
 	}
 }
