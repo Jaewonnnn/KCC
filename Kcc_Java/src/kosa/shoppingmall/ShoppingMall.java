@@ -8,12 +8,13 @@ import java.util.List;
 public class ShoppingMall {
 	private List<Product> productList;
 	private List<Person> personList;
-	private BufferedReader br = DataInput.getInstance();
-	private Person p;
+	private BufferedReader br;
+	private Person person;
 
 	public ShoppingMall() {
 		productList = new ArrayList<Product>();
 		personList = new ArrayList<Person>();
+		br = DataInput.getInstance();
 		personList.add(new Person("admin"));
 		productList.add(new Product("nike1", 100000, Category.valueOf("OUTER")));
 		productList.add(new Product("nike2", 100000, Category.valueOf("PANTS")));
@@ -43,8 +44,8 @@ public class ShoppingMall {
 				System.out.print("구매 할 상품을 입력하세요 : ");
 				String product = br.readLine();
 				if (productValid(product)) {
-					p.setOrderList(new Order(product));
-					System.out.println(p.getOrderList().get(p.getOrderList().size() - 1).getProductName() + " 구매 완료");
+					person.setOrderList(new Order(product));
+					System.out.println(person.getOrderList().get(person.getOrderList().size() - 1).getProductName() + " 구매 완료");
 				} else {
 					System.out.println("구매 실패!");
 				}
@@ -56,29 +57,29 @@ public class ShoppingMall {
 				if (productNum > productList.size()) {
 					System.out.println("등록 실패!");
 				} else {
-					p.setBasket(findProduct(productNum));
+					person.setBasket(findProduct(productNum));
 					System.out.println("====================================");
-					System.out.println(p.getBasket().getBasket().get(p.getBasket().getBasket().size() - 1).getName()
+					System.out.println(person.getBasket().getBasket().get(person.getBasket().getBasket().size() - 1).getName()
 							+ " 장바구니 등록 완료");
 				}
 				System.out.println("====================================");
 				break;
 			case "4":
-				printBasketList();
+				person.printBasketList();
 				System.out.println("장바구니에서 삭제 할 상품 번호를 입력하세요 : ");
 				int idx = Integer.parseInt(br.readLine());
-				if (idx > p.getBasket().getBasket().size()) {
+				if (idx > person.getBasket().getBasket().size()) {
 					System.out.println("삭제 실패!");
 				} else {
-					System.out.println(p.getBasket().getBasket().get(idx - 1).getName() + " 삭제 완료");
-					p.deleteBasketList(idx);
+					System.out.println(person.getBasket().getBasket().get(idx - 1).getName() + " 삭제 완료");
+					person.deleteBasketList(idx);
 				}
 				break;
 			case "5":
-				printBasketList();
+				person.printBasketList();
 				break;
 			case "6":
-				printOrderList();
+				person.printOrderList();
 				break;
 			case "7":
 				System.out.println("수정 할 목록 번호를 입력해주세요");
@@ -91,17 +92,17 @@ public class ShoppingMall {
 					String content = br.readLine();
 					switch (updateNum) {
 					case 1:
-						p.setName(content);
+						person.setName(content);
 						break;
 					case 2:
-						p.setAddress(content);
+						person.setAddress(content);
 						break;
 					}
 				}
 				break;
 			case "8":
 				System.out.println("====================================");
-				System.out.println(deletePerson(p) + "님 회원 탈퇴 완료");
+				System.out.println(deletePerson(person) + "님 회원 탈퇴 완료");
 				System.out.println("====================================");
 				return;
 			case "9":
@@ -152,13 +153,16 @@ public class ShoppingMall {
 				printProduct();
 				break;
 			case "3":
-				System.out.println("삭제 할 상품의 번호를 입력해주세요");
 				printProduct();
+				System.out.println("삭제 할 상품의 번호를 입력해주세요");
 				int idx = Integer.parseInt(br.readLine());
 				if (idx > productList.size()) {
 					System.out.println("삭제 실패!");
 				} else {
+					System.out.println("====================================");
+					System.out.println(productList.get(idx - 1).getName() + "삭제 완료");
 					productList.remove(idx - 1);
+					System.out.println("====================================");
 				}
 				break;
 			case "4":
@@ -196,54 +200,8 @@ public class ShoppingMall {
 		System.out.println("====================================");
 	}
 
-	public void printOrderList() {
-		System.out.println("====================================");
-		if (p.getOrderList().size() == 0) {
-			System.out.println("구매 목록이 비어있습니다.");
-		} else {
-			System.out.println("번호\t주문번호\t\t상품명");
-			System.out.println("====================================");
-			for (int i = 0; i < p.getOrderList().size(); i++) {
-				System.out.println((i + 1) + "\t" + p.getOrderList().get(i).getOrderNumber() + "\t"
-						+ p.getOrderList().get(i).getProductName());
-			}
-		}
-		System.out.println("====================================");
-	}
-
 	public Product findProduct(int idx) {
 		return productList.get(idx - 1);
-	}
-
-	public void printBasketList() {
-		if (p.getBasket().getBasket().size() == 0) {
-			System.out.println("====================================");
-			System.out.println("장바구니가 비어있습니다.");
-		} else {
-			System.out.println("====================================");
-			System.out.println("번호\t카테고리\t상품이름\t가격");
-			System.out.println("====================================");
-			for (int i = 0; i < p.getBasket().getBasket().size(); i++) {
-				System.out.println((i + 1) + "\t" + p.getBasket().getBasket().get(i).getCategory() + "t"
-						+ p.getBasket().getBasket().get(i).getName() + "\t"
-						+ p.getBasket().getBasket().get(i).getPrice());
-			}
-		}
-		System.out.println("====================================");
-	}
-
-	public void printProduct(String category) {
-		int num = 1;
-		System.out.println("====================================");
-		System.out.println("번호\t상품이름\t가격");
-		System.out.println("====================================");
-		for (int i = 0; i < productList.size(); i++) {
-			if (productList.get(i).getCategory() == Category.valueOf(category)) {
-				System.out.println(num + "\t" + productList.get(i).getName() + "\t" + productList.get(i).getPrice());
-				num++;
-			}
-		}
-		System.out.println("====================================");
 	}
 
 	public void signUp() throws IOException {
@@ -260,13 +218,12 @@ public class ShoppingMall {
 	public Person signIn() throws IOException {
 		System.out.print("이름을 입력해주세요 : ");
 		String name = br.readLine();
-		if (findIndex(name)) {
+		if (findForPersonList(name)) {
 			System.out.println("====================================");
-			System.out.println(p.getName() + "님 환영합니다");
+			System.out.println(person.getName() + "님 환영합니다");
 			System.out.println("====================================");
-			return p;
-		}
-		else {
+			return person;
+		} else {
 			System.out.println("====================================");
 			System.out.println("로그인 실패!");
 			System.out.println("====================================");
@@ -274,15 +231,14 @@ public class ShoppingMall {
 		}
 	}
 
-	public boolean findIndex(String name) {
+	public boolean findForPersonList(String name) {
 		boolean flag = false;
 		for (int i = 0; i < personList.size(); i++) {
 			if (personList.get(i).getName().equals(name)) {
-				p = personList.get(i);
+				person = personList.get(i);
 				return true;
 			}
 		}
-
 		return false;
 	}
 
@@ -307,6 +263,20 @@ public class ShoppingMall {
 		for (int i = 0; i < productList.size(); i++) {
 			System.out.println((i + 1) + "\t" + productList.get(i).getCategory() + "\t" + productList.get(i).getName()
 					+ "\t" + +productList.get(i).getPrice());
+		}
+		System.out.println("====================================");
+	}
+
+	public void printProduct(String category) {
+		int num = 1;
+		System.out.println("====================================");
+		System.out.println("번호\t상품이름\t가격");
+		System.out.println("====================================");
+		for (int i = 0; i < productList.size(); i++) {
+			if (productList.get(i).getCategory() == Category.valueOf(category)) {
+				System.out.println(num + "\t" + productList.get(i).getName() + "\t" + productList.get(i).getPrice());
+				num++;
+			}
 		}
 		System.out.println("====================================");
 	}

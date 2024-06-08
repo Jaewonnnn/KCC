@@ -26,8 +26,28 @@ public class Person {
 		basket = new Basket();
 		this.role = Role.USER;
 	}
+
 	public void deleteBasketList(int idx) {
-		basket.getBasket().remove(idx-1);
+		basket.getBasket().remove(idx - 1);
+	}
+
+	public void printBasketList() {
+		basket.printBasketList();
+	}
+
+	public void printOrderList() {
+		System.out.println("====================================");
+		if (orderList.size() == 0) {
+			System.out.println("구매 목록이 비어있습니다.");
+		} else {
+			System.out.println("번호\t주문번호\t\t상품명");
+			System.out.println("====================================");
+			for (int i = 0; i < orderList.size(); i++) {
+				System.out.println(
+						(i + 1) + "\t" + orderList.get(i).getOrderNumber() + "\t" + orderList.get(i).getProductName());
+			}
+		}
+		System.out.println("====================================");
 	}
 
 	public String getName() {
@@ -69,5 +89,5 @@ public class Person {
 	public void setRole(Role role) {
 		this.role = role;
 	}
-	
+
 }
