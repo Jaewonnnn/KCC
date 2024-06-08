@@ -25,8 +25,11 @@ public class ShoppingMall {
 
 	public void userStart() throws IOException {
 		while (true) {
-			System.out.println("1.상품 보기 2.상품 주문하기 3.장바구니 추가하기 4.장바구니 삭제하기 5.장바구니 보기");
-			System.out.println("6.구매 기록 보기 7.회원 정보 수정 8.회원 탈퇴 9.로그아웃");
+			System.out.println("번호\t메뉴");
+			System.out.println("====================================");
+			System.out.println("1.\t상품 보기\n2.\t상품주문\n3.\t장바구니추가\n4.\t장바구니삭제\n5.\t장바구니보기\n6.\t구매기록보기\n7.\t회원정보수정\n8.\t회원탈퇴\n9.\t로그아웃");
+			System.out.println("====================================");
+			System.out.print("번호를 입력해주세요 : ");
 			String num = br.readLine();
 			switch (num) {
 			case "1":
@@ -220,7 +223,7 @@ public class ShoppingMall {
 		String name = br.readLine();
 		if (findForPersonList(name)) {
 			System.out.println("====================================");
-			System.out.println(person.getName() + "님 환영합니다");
+			System.out.println(person.getName() + "로그인 완");
 			System.out.println("====================================");
 			return person;
 		} else {

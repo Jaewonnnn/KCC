@@ -10,7 +10,12 @@ public class Main {
 		BufferedReader br = DataInput.getInstance();
 
 		while (true) {
-			System.out.println("1.로그인 2.회원가입 3.종료");
+			System.out.println("====================================");
+			System.out.println("번호\t메뉴");
+			System.out.println("====================================");
+			System.out.println("1\t로그인\n2\t회원가입\n3\t종료");
+			System.out.println("====================================");
+			System.out.print("번호를 입력하세요 : ");
 			String num = br.readLine();
 			switch (num) {
 			case "1":
