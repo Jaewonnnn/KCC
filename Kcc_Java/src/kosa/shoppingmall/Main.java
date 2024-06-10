@@ -8,7 +8,7 @@ public class Main {
 		ShoppingMall shoppringMall = new ShoppingMall();
 
 		BufferedReader br = DataInput.getInstance();
-
+		
 		while (true) {
 			System.out.println("====================================");
 			System.out.println("번호\t메뉴");

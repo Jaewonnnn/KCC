@@ -3,13 +3,17 @@ package kosa.shoppingmall;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class ShoppingMall {
 	private List<Product> productList;
 	private List<Person> personList;
 	private BufferedReader br;
 	private Person person;
+	static int i = 1;
 
 	public ShoppingMall() {
 		productList = new ArrayList<Product>();
@@ -181,13 +185,15 @@ public class ShoppingMall {
 	}
 
 	public String deletePerson(Person p) {
-		for (int i = 0; i < personList.size(); i++) {
-			if (p.getName().equals(personList.get(i).getName())) {
-				personList.remove(i);
-				return p.getName();
-			}
-		}
-		return "";
+//		for (int i = 0; i < personList.size(); i++) {
+//			if (p.getName().equals(personList.get(i).getName())) {
+//				personList.remove(i);
+//				return p.getName();
+//			}
+//		}
+		String n = p.getName();
+		personList = personList.stream().filter(s->(!s.getName().equals(p.getName()))).collect(Collectors.toList());
+		return n;
 	}
 
 	public void printPersonList() {
@@ -196,9 +202,10 @@ public class ShoppingMall {
 			System.out.println("유저가 없습니다");
 		} else {
 			System.out.println("번호\t이름\t주소");
-			for (int i = 1; i < personList.size(); i++) {
-				System.out.println(i + "\t" + personList.get(i).getName() + "\t" + personList.get(i).getAddress());
-			}
+//			for (int i = 1; i < personList.size(); i++) {
+//				System.out.println(i + "\t" + personList.get(i).getName() + "\t" + personList.get(i).getAddress());
+//			}
+			IntStream.range(1, personList.size()).forEach(per->System.out.println((per+1) + "\t" + personList.get(per).getName() + "\t" + personList.get(per).getAddress()));
 		}
 		System.out.println("====================================");
 	}
@@ -222,8 +229,9 @@ public class ShoppingMall {
 		System.out.print("이름을 입력해주세요 : ");
 		String name = br.readLine();
 		if (findForPersonList(name)) {
+			person = findIdxForPersonList(name);
 			System.out.println("====================================");
-			System.out.println(person.getName() + "로그인 완");
+			System.out.println(person.getName() + "로그인 완료");
 			System.out.println("====================================");
 			return person;
 		} else {
@@ -233,16 +241,19 @@ public class ShoppingMall {
 			return new Person();
 		}
 	}
+	public Person findIdxForPersonList(String name) {
+		return personList.stream().filter(s->s.getName().equals(name)).findFirst().get();
+	}
 
 	public boolean findForPersonList(String name) {
-		boolean flag = false;
-		for (int i = 0; i < personList.size(); i++) {
-			if (personList.get(i).getName().equals(name)) {
-				person = personList.get(i);
-				return true;
-			}
-		}
-		return false;
+//		boolean flag = false;
+//		for (int i = 0; i < personList.size(); i++) {
+//			if (personList.get(i).getName().equals(name)) {
+//				person = personList.get(i);
+//				return true;
+//			}
+//		}
+		return personList.stream().anyMatch(s->s.getName().equals(name));
 	}
 
 	public void insertProduct() throws IOException {
@@ -260,38 +271,53 @@ public class ShoppingMall {
 	}
 
 	public void printProduct() {
+		i = 1;
 		System.out.println("====================================");
 		System.out.println("번호\t카테고리\t상품이름\t가격");
 		System.out.println("====================================");
-		for (int i = 0; i < productList.size(); i++) {
-			System.out.println((i + 1) + "\t" + productList.get(i).getCategory() + "\t" + productList.get(i).getName()
-					+ "\t" + +productList.get(i).getPrice());
-		}
+//		for (int i = 0; i < productList.size(); i++) {
+//			System.out.println((i + 1) + "\t" + productList.get(i).getCategory() + "\t" + productList.get(i).getName()
+//					+ "\t" + +productList.get(i).getPrice());
+//		}
+		productList.stream().forEach(s->System.out.println((i++) + "\t" + s.getCategory() + "\t" + s.getName() + "\t" + s.getPrice()));
 		System.out.println("====================================");
 	}
 
 	public void printProduct(String category) {
-		int num = 1;
+//		int num = 1;
+		i = 1;
 		System.out.println("====================================");
 		System.out.println("번호\t상품이름\t가격");
 		System.out.println("====================================");
-		for (int i = 0; i < productList.size(); i++) {
-			if (productList.get(i).getCategory() == Category.valueOf(category)) {
-				System.out.println(num + "\t" + productList.get(i).getName() + "\t" + productList.get(i).getPrice());
-				num++;
-			}
-		}
-		System.out.println("====================================");
+//		for (int i = 0; i < productList.size(); i++) {
+//			if (productList.get(i).getCategory() == Category.valueOf(category)) {
+//				System.out.println(num + "\t" + productList.get(i).getName() + "\t" + productList.get(i).getPrice());
+//				num++;
+//			}
+//		}
+//		productList.stream().filter(s->s.getCategory()==Category.valueOf(category)).forEach(ca->System.out.println((i++) + "\t"+ca.getName()+"\t"+ca.getPrice()));
+//		System.out.println("====================================");
+//		
+		IntStream.range(0, productList.size())
+	    .filter(i -> productList.get(i).getCategory().equals(Category.valueOf(category)))
+	    .forEach(i -> {
+	        System.out.println("상품번호 : " + (i + 1));
+	        productList.get(i).getName();
+	    });
 	}
-
+	
 	public void printCategory() {
 		Category[] arr = Category.values();
 		System.out.println("================");
 		System.out.println("번호\t카테고리");
-		for (int i = 0; i < arr.length; i++) {
-			System.out.println((i + 1) + "\t" + arr[i]);
-		}
+//		for (int i = 0; i < arr.length; i++) {
+//			System.out.println((i + 1) + "\t" + arr[i]);
+//		}
+		i = 1;
+		Arrays.stream(arr).forEach(s->System.out.println((i++) + "\t" + s));
 		System.out.println("================");
+		
+
 	}
 
 }
