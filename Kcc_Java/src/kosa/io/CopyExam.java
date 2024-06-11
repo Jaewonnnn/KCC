@@ -23,8 +23,8 @@ public class CopyExam {
 			e.printStackTrace();
 		}finally {
 			try {
-				reader.close();
 				writer.close();
+				reader.close();
 			} catch (Exception e2) {
 				e2.printStackTrace();
 			}

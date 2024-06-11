@@ -1,5 +1,9 @@
 package kosa.phone;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedList;
@@ -76,6 +80,38 @@ public class Manager {
 				}
 			}
 			break;
+		}
+	}
+	public void download() {
+		ObjectOutputStream oos = null;
+		
+		try {
+			oos = new ObjectOutputStream(new FileOutputStream("PhoneInfo.ser"));
+			oos.writeObject(list);
+			System.out.println("저장 완료");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				oos.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+	}
+	public void upload() {
+		ObjectInputStream ois = null;
+		try {
+			ois = new ObjectInputStream(new FileInputStream("PhoneInfo.ser"));
+			list = (LinkedList<PhoneInfo>)ois.readObject();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				ois.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
 		}
 	}
 

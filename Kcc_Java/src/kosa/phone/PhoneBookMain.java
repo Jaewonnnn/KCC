@@ -11,7 +11,7 @@ public class PhoneBookMain {
 		Scanner sc = DataInput.getInstance();
 		
 		xx: while (true) {
-			System.out.println("1.추가 2.전체출력 3.검색 4.수정 5.삭제 6.정렬 7.종료");
+			System.out.println("1.추가 2.전체출력 3.검색 4.수정 5.삭제 6.정렬 7.데이터 저장 8.데이터 불러오기 9.종료");
 			System.out.print(">메뉴 : ");
 
 			String menu = sc.nextLine();
@@ -51,6 +51,12 @@ public class PhoneBookMain {
 				manager.sortList();
 				continue;
 			case "7":
+				manager.download();
+				break;
+			case "8":
+				manager.upload();
+				break;
+			case "9":
 				System.out.println("프로그램 종료");
 				break xx;
 			default:
