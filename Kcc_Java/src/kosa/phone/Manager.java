@@ -106,8 +106,7 @@ public class Manager {
 			list = (LinkedList<PhoneInfo>)ois.readObject();
 		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
-			try {
+		}finally {			try {
 				ois.close();
 			} catch (Exception e2) {
 				e2.printStackTrace();

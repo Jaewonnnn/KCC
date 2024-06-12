@@ -51,35 +51,36 @@ public class Dos {
 	}
 
 	public void mkdir(String menu) {
-		if(menu.matches("^(mkdir) .*")){
+		if (menu.matches("^(mkdir) .*")) {
 			String[] newStr = menu.split(" ");
-			new File(file.getPath(),newStr[1]).mkdirs();
+			new File(file.getPath(), newStr[1]).mkdirs();
 		}
 	}
+
 	public void vi(String menu) {
-		if(menu.matches("^(vi) .*\\..*")) {			
-			FileWriter fw =null;
+		if (menu.matches("^(vi) .*\\..*")) {
+			FileWriter fw = null;
 			String[] newStr = menu.split(" ");
-			
+
 			String str = "";
 			String poem = "";
 			Scanner sc = new Scanner(System.in);
-			while(true) {
-				
+			while (true) {
+
 				str = sc.nextLine();
-				if(str.equals(":q")) {
-				break;
-				}else {
-					poem+=str;
+				if (str.equals(":q")) {
+					break;
+				} else {
+					poem += str;
 					poem += "\n";
 				}
 			}
 			try {
-				fw = new FileWriter(file.getPath() +"\\\\"+ newStr[1]);
+				fw = new FileWriter(file.getPath() + "\\\\" + newStr[1]);
 				fw.write(poem);
 			} catch (Exception e) {
 				e.printStackTrace();
-			}finally {
+			} finally {
 				try {
 					fw.close();
 				} catch (Exception e2) {
