@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>홈페이지</h1>
+<!-- 	action = "서버URL" method = "get/post"-->
+	<form action="서버주소" method = "get/post">
+		<fieldset>
+			<ol>
+				<li>
+					<label for = "id">
+						아이디
+					</label>
+<!-- 					name = 어떤 데이터 이름으로 넘어오는지 알고싶을 때 필요 -->
+<!-- 					id =  라벨에 있는 for = "id와 맞춤, 라벨을 누르면 커서 옮겨줌-->
+<!-- 					autofocus = 실행 시 자동으로 커서 옮겨줌 -->
+					<input type = "text" name = "userId" id = "id"
+					autofocus="autofocus" placeholder="jaewon">
+				</li>
+				<li>
+					<label>패스워드</label>
+					<input type = "password" name = "userPass">
+				</li>
+				<li>
+					<label>이메일</label>
+					<input type = "email" placeholder="aa@aa.com" required="required">
+				</li>
+				<li>
+					<label>배송날짜</label>
+					<input type = "date">
+				</li>
+				<li>
+<!-- 				textarea는 반드시 태그를 닫아줘야 함 -->
+					<textarea rows="10" cols="30" placeholder="지원동기"></textarea>
+				</li>
+			</ol>
+		</fieldset>
+		<fieldset>
+			<input type = "submit" value="전송">
+		</fieldset>
+	</form>
+</body>
+</html>

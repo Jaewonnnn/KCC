@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<header>
+		<h1>HTML 기초 다지기</h1>
+	</header>
+	<hr>
+	<section id="15">
+		<header>
+			<h2>HTML 마크업 작성[1/2]</h2>
+		</header>
+		<section>
+			<ul>
+				<li>태그는 브라우저에 의해 해석되며, 각 태그의 의미는 모두 다릅니다.</li>
+				<li>태그 내용이 화면에 표시되지는 않습니다.</li>
+				<li>BODY, TITLE, BR과 같은 텍스트는 화면에 표시하지 않습니다.</li>
+				<li>태그 사이에 입력된 텍스트를 브라우저에 보여줍니다.</li>
+			</ul>
+			<figure>
+				<div>
+					<img alt="1-1사용예" src="./html_mission_images/1-1.png"> <img
+						alt="1-2결과화면" src="./html_mission_images/1-2.png">
+				</div>
+			</figure>
+		</section>
+		<hr>
+	</section>
+
+	<section id="16">
+		<header>
+			<h2>HTML 마크업 작성[2/2]</h2>
+		</header>
+		<section>
+			<ul>
+				<li>&lth2&gt태그를 이용하여 제목을 표시합니다.</li>
+				<li>&ltbr&gt태그를 이용하여 줄 바꿈을 합니다.</li>
+				<li>&ltstrong&gt태그를 이용하여 문자를 강조합니다.</li>
+				<li>&ltmark&gt태그를 이용하여 문자를 강조합니다.</li>
+			</ul>
+			<figure>
+				<div>
+					<img alt="2-1사용예" src="./html_mission_images/2-1.png"> <img
+						alt="2-2결과화면" src="./html_mission_images/2-2.png">
+				</div>
+			</figure>
+		</section>
+		<hr>
+	</section>
+
+	<section id = "17">
+		<header>
+			<h2>DOCTYPE</h2>
+		</header>
+		<section>
+			<ul>
+				<li>브라우저는 현재 문서가 어떠한 형태의 문서인지를 판단하는 목적으로 <mark>DOCTYPE</mark>을 확인합니다.</li>
+				<li>선언되지 않을 경우, 브라우저는 HTML을 해석하고 출력하는데 많은 시간을 사용합니다.</li>
+				<li>HTML5에서는 &lt!DOCTYPE html&gt로 간소화 하였습니다.</li>
+			</ul>
+			<figure>
+				<img alt="3-1 DOCTYPE예시" src="./html_mission_images/3-1.png">
+			</figure>
+		</section>
+		<hr>
+	</section>
+	
+	<section id = "18">
+		<header>
+			<h2>HTML 요소 기초</h2>
+		</header>
+		<section>
+			<ul>
+				<li>HTML Tag는 HTML 문서의 구조와 의미를 브라우저로 전달합니다.</li>
+				<li>"&lt"과"&gt"로 둘러싸여 다른 문자열과 구분합니다.</li>
+				<li>대소문자 구별이 없습니다.</li>
+				<li>시작태그(&lt &gt)와 종료태그(&lt /&gt)로 쌍을 이루며 중첩되지 않도록 합니다.</li>
+			</ul>
+			<figure>
+				<img alt="4-1 태그 예시" src="./html_mission_images/4-1.png">
+			</figure>
+		</section>
+		<hr>
+	</section>
+	
+	<section id = "19">
+		<header>
+			<h2>Root 요소</h2>
+		</header>
+		<section>
+			<ul>
+				<li>&lthtml&gt태그는 HTML문서 전체를 정의합니다.</li>
+				<li>Head와 Body로 구성되어 있으며, 어떠한 카테고리에도 속하지 않습니다.</li>
+				<li>manifest, xmlns 속성 지정 가능합니다.</li>
+					<ul>
+  						<li>manifest 속성:</li>
+  						<ul>
+  							<li>manifest 속성은 웹 애플리케이션이 오프라인에서도 사용할 수 있도록 하는 기능을 제공합니다.</li>
+  							<li>이 속성을 사용하면 웹 브라우저가 웹페이지와 관련된 리소스(HTML, CSS, JavaScript, 이미지 등)를 캐시할 수 있습니다.</li>
+  							<li>사용자가 오프라인 상태에서도 웹 애플리케이션을 사용할 수 있도록 해줍니다.</li>
+  							<li>오프라인 캐싱을 위한 manifest파일의 URL을 지정합니다.</li>
+						</ul>
+  						<li>xmlns 속성:</li>
+  						<ul>
+  							<li>xmlns 속성은 HTML 문서의 XML 네임스페이스를 정의합니다.</li>
+  							<li>네임스페이스는 XML 문서에서 요소와 속성의 이름을 고유하게 식별하는 데 사용됩니다.</li>
+  							<li>xmlns 속성의 값은 XML 네임스페이스 URI를 지정합니다.</li>
+  							<li>일반적으로 HTML 문서에서 xmlns="http://www.w3.org/1999/xhtml" 값을 사용합니다.</li>
+  							<li>이는 HTML 문서가 XHTML(Extensible HTML) 규격을 따르고 있음을 나타냅니다.</li>
+						</ul>
+					</ul>
+				<li>HTML 문서는 머리부분(&ltHEAD&gt,&lt/HEAD&gt)과 본체부분 (&ltBODY&gt, &lt/BODY&gt)으로 구성됩니다.</li>
+			</ul>
+			<figure>
+				<img alt="5-1 html태그 사용 예" src="./html_mission_images/5-1.png">
+				<img alt="5-2 html속성" src="./html_mission_images/5-2.png">
+			</figure>
+		</section>
+		<hr>
+	</section>
+	
+	<section id = "20">
+		<header>
+			<h2>Head 요소 [1/2] - 문서 머리글[HEAD], 제목[TITLE]</h2>
+		</header>
+		<section>
+			<ul>
+				<li>&lthead&gt 태그는 브라우저에게 HTML 문서의 머리부분임을 알려줍니다.</li>
+				<li>&lttitle&gt, &ltmeta&gt, &ltstyle&gt, &ltlink&gt 태그를 포함할 수 있습니다.</li>
+				<li>&lttitle&gt 태그는 문서의 제목을 의미하며, 브라우저의 제목 표시줄에 태그 내용이 나타납니다.</li>
+				<li>&lttitle&gt 태그 이외 다른 태그로 표현한 정보는 화면에 보여주지 않습니다.</li>
+			</ul>
+			<figure>
+				<img alt="6-1 Head 사용 예" src="./html_mission_images/6-1.png">
+			</figure>
+		</section>
+	</section>
+	
+	<section id = "21">
+		<header>
+			<h2></h2>
+		</header>
+	</section>
+	
+</body>
+</html>
