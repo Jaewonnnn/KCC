@@ -62,6 +62,7 @@ function solution2(my_string) {
   return my_string
     .split("")
     .filter((v) => !isNaN(v))
+    .map((v) => +v)
     .sort((a, b) => a - b);
 }
 console.log(solution2("hi12392"));

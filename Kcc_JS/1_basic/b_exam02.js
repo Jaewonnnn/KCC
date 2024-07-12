@@ -61,7 +61,7 @@ console.log(!!false); // false
 // 문자열도 논리연산자로 변환할 수 있음
 // 빈 문자열이라면 false
 // 문자열이 있으면 true
-console.log(!!''); // false
+console.log(!!""); // false
 // 숫자 0은 false
 // 1 이상은 true
 console.log(!!0); // false
@@ -69,7 +69,7 @@ console.log(!!0); // false
 console.log(!!undefined); // false
 // null도 false
 console.log(!!null); // false
-console.log(!!'0'); // true
+console.log(!!"0"); // true
 // 객체
 console.log(!!{}); // true
 // 배열
@@ -84,24 +84,19 @@ let nullVar = null;
 console.log(typeof nullVar); // object
 
 // function / 함수는 1급 객체이기도 함.
-let fun = function(){}
+let fun = function () {};
 console.log(typeof fun); // function
 
 // object / 중괄호 -> 객체
 let person = {
-  name : '홍길동',
-  age : 20
-}
+  name: "홍길동",
+  age: 20,
+};
 console.log(typeof person); // object
 console.log(person.name);
-console.log(person['age']);
+console.log(person["age"]);
 
-const kccMember = [
-  "김현민",
-  "윤채원",
-  "김연호",
-  "원승언"
-]
+const kccMember = ["김현민", "윤채원", "김연호", "원승언"];
 console.log(typeof kccMember); // object
 console.log(kccMember);
 
@@ -110,14 +105,14 @@ console.log(kccMember);
  * 유일무이한 값을 생성할 때 사용
  */
 
-const test1 = '1';
-const test2 = '1';
+const test1 = "1";
+const test2 = "1";
 
 console.log(test1 === test2); // true
 
-const symbol1 = Symbol('1');
-const symbol2 = Symbol('1');
+const symbol1 = Symbol("1");
+const symbol2 = Symbol("1");
 
 console.log(symbol1 === symbol2); // false
 
-console.log('==============================');
+console.log("==============================");
