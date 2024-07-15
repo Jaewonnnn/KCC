@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script type="text/javascript">
+      let timeId;
+      let running = false;
+      function show() {
+        running = true;
+        let now = new Date();
+        let hour = now.getHours();
+        let minute = now.getMinutes();
+        let seconds = now.getSeconds();
+        let timeValue = hour + "시 " + minute + "분 " + seconds + "초";
+
+        document.fmt.display.value = timeValue;
+        timeId = setTimeout("show()", 1000);
+      }
+      function startClock() {
+        if (running) return;
+        show();
+        timeId = setInterval("show()", 1000);
+        running = true;
+      }
+      function stopClock() {
+        if (running) {
+          clearInterval(timeId);
+          running = false;
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <form name="fmt">
+      <input type="text" name="display" /><br />
+      <input type="button" name="start" value="시작" onclick="startClock()" />
+      <input type="button" name="end" value="종료" onclick="stopClock()" />
+    </form>
+  </body>
+</html>
