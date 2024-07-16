@@ -1,44 +1,26 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>문서</title>
+    <title>Document</title>
     <script type="text/javascript">
-      // 이미지 경로를 저장하는 배열
-      let images = [
-        "../images/cat0.jpg",
-        "../images/cat1.gif",
-        "../images/cat1.jpg",
-        "../images/cat2.gif",
-        "../images/cat2.jpg",
-        "../images/cat3.gif",
-        "../images/cat3.jpg",
-        "../images/pic1.jpg",
-        "../images/pic2.jpg",
-        "../images/pic3.jpg",
-        "../images/pic4.jpg",
-        "../images/pic5.jpg",
-        "../images/pic6.jpg",
-        "../images/pic7.jpg",
-      ];
+      // 이미지를 랜덤하게 출력하는 예제
+      // 배열에 이미지 경로 추가 후 랜덤한 수를 입력 받아 해당 이미지를 출력
+      let arr = [];
 
-      let img;
-
-      function rand() {
-        img = document.getElementById("img");
-        if (img) {
-          let randomNumber = Math.floor(Math.random() * images.length);
-          img.src = images[randomNumber];
-        }
+      for (let i = 0; i < 7; i++) {
+        arr[i] = "../images/pic" + (i + 1) + ".jpg";
       }
 
       window.onload = function () {
-        setInterval(rand, 1000);
+        const n = Math.floor(Math.random() * 7);
+        const img = document.getElementById("img");
+        img.src = arr[n];
       };
     </script>
   </head>
   <body>
-    <img id="img" src="../images/cat0.jpg" width="300" height="300" />
+    <img id="img" src="" />
   </body>
 </html>

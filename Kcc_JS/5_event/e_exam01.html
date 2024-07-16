@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script type="text/javascript">
+      function doProcess() {
+        //const result = document.getElementById("result");
+        const result = document.querySelector("#result");
+        result.innerHTML = "<span>이벤트 결과1</span>";
+      }
+      function doProcess2() {
+        alert("이벤트 결과2");
+      }
+
+      // const btn = document.getElementById("btn");
+      // btn.onclick = doProcess2;
+
+      // window.onload = function () {
+      //   const btn = document.getElementById("btn");
+      //   btn.onclick = doProcess2;
+      //   // 주소값이 덮어써졌기 때문에 제일 마지막 함수만 동작함.
+      //   btn.onclick = doProcess;
+      // };
+      window.onload = function () {
+        const btn = document.getElementById("btn");
+        btn.addEventListener("click", doProcess2, false);
+        btn.addEventListener("click", doProcess, false);
+      };
+    </script>
+  </head>
+  <body>
+    <div id="result"></div>
+    <input type="button" value="버튼1" onclick="doProcess()" />&nbsp;&nbsp;
+    <input type="button" value="버튼2" id="btn" />
+    <!-- <script type="text/javascript">
+      const btn = document.getElementById("btn");
+      btn.onclick = doProcess2;
+    </script> -->
+  </body>
+</html>

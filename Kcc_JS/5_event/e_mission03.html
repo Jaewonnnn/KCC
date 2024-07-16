@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script type="text/javascript">
+      //onMouseOver
+      function onMouseOver(number) {
+        const img = document.getElementById("default");
+        img.src = `../images/cat${number}.jpg`;
+      }
+      //onMouseOut
+      window.onload = function () {
+        const images = document.getElementsByTagName("img");
+        for (let i = 0; i < images.length; i++) {
+          images[i].addEventListener(
+            "mouseover",
+            function () {
+              onMouseOver(i);
+            },
+            false
+          );
+          images[i].onmouseout = function () {
+            document.getElementById("default").src = "../images/cat0.jpg";
+          };
+        }
+      };
+    </script>
+  </head>
+  <body>
+    <center>
+      <h2>고양이 앨범</h2>
+      <img
+        id="default"
+        src="../images/cat0.jpg"
+        border="1"
+        width="600"
+        height="450"
+      />
+      <br /><br /><br />
+
+      <img
+        src="../images/cat1.jpg"
+        width="70"
+        height="70"
+        border="1"
+        hspace="10"
+        vspace="10"
+      />
+      <img
+        src="../images/cat2.jpg"
+        width="70"
+        height="70"
+        border="1"
+        hspace="10"
+        vspace="10"
+      />
+      <img
+        src="../images/cat3.jpg"
+        width="70"
+        height="70"
+        border="1"
+        hspace="10"
+        vspace="10"
+      />
+    </center>
+  </body>
+</html>

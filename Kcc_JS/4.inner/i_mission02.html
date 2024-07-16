@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script type="text/javascript">
+      function check() {
+        checkId();
+        checkEmail();
+      }
+      function checkEmail() {
+        // @체크
+        const email = document.fmt.email.value;
+        const result = email.indexOf("@");
+        if (result == -1) {
+          alert("부적절한 이메일 입니다.");
+        }
+      }
+      function checkId() {
+        // str 포함 여부 체크
+        const str =
+          "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
+        const id = document.fmt.id.value;
+        for (let i = 0; i < id.length; i++) {
+          if (!str.includes(id.charAt(i))) {
+            alert("부적절한 아이디 입니다.");
+            break;
+          }
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <form name="fmt">
+      아이디 : <input type="text" name="id" /><br />
+      이메일 : <input type="text" name="email" /><br />
+      <input type="button" value="전송" onclick="check()" />
+    </form>
+  </body>
+</html>

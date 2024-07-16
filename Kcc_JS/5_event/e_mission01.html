@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script type="text/javascript">
+      var calculate = {
+        num1: 0,
+        num2: 0,
+        sum: 0,
+        cals: function (cal) {
+          num1 = parseInt(document.fmt.f1.value);
+          num2 = parseInt(document.fmt.f2.value);
+          switch (cal) {
+            case "plus":
+              sum = num1 + num2;
+              break;
+            case "minus":
+              sum = num1 - num2;
+              break;
+          }
+          document.fmt.result.value = sum;
+        },
+      };
+
+      window.onload = function () {
+        var plusBtn = document.getElementById("plus");
+        var minusBtn = document.getElementById("minus");
+
+        plusBtn.addEventListener("click", function () {
+          calculate.cals("plus");
+        });
+
+        minusBtn.addEventListener("click", function () {
+          calculate.cals("minus");
+        });
+      };
+    </script>
+  </head>
+  <body>
+    <h2>계산기</h2>
+    <table border="1">
+      <form name="fmt">
+        <tr>
+          <td>숫자1</td>
+          <td><input type="text" name="f1" /></td>
+        </tr>
+        <tr>
+          <td>숫자2</td>
+          <td><input type="text" name="f2" /></td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <input type="button" value="+" id="plus" /> &nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="button" value="-" id="minus" />
+          </td>
+        </tr>
+        <tr>
+          <td>결과</td>
+          <td><input type="text" name="result" /></td>
+        </tr>
+      </form>
+    </table>
+  </body>
+</html>

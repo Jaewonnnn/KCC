@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script type="text/javascript">
+      // 이벤트 핸들러 함수 안에서 this는 이벤트 대상이다.
+      var data = 10;
+
+      window.onload = function () {
+        const btn = document.getElementById("btn");
+        btn.onclick = function () {
+          this.data = 20;
+          data = 30;
+
+          console.log("1. data : " + data); // 30
+          console.log("2. this.data : " + this.data); // 20
+          console.log("3. window.data : " + window.data); // 30
+        };
+      };
+    </script>
+  </head>
+  <body>
+    <button id="btn">버튼</button>
+  </body>
+</html>
