@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+<script type="text/javascript" src="httpRequest.js"></script>
+<script type="text/javascript">
+	function hello(){
+		// 1. 자바스크립트 이벤트 시작
+		const params = "name=" + encodeURIComponent(document.fmt.name.value);
+		sendRequest("hello.jsp", params, helloRequest, "GET");
+		// 2. 
+	}
+	
+	// 서버로부터 데이터값이 도착하면 자동으로 호출
+	// text, xml, json 등 다양하게 올 수 있음 => html으로 변환 => 출력
+	function helloRequest(){
+		if(httpRequest.readyState == 4) { // readyState == 4 : 서버로부터 결과값을 다 가져왔는지?
+			if(httpRequest.status == 200){
+				alert('서버응답: ' + httpRequest.responseText);
+			}
+		}
+	}
+</script>
+</head>
+<body>
+	<form name="fmt">
+		<input type = "text" name = "name"/>
+		<input type = "button" value = "전송" onclick = "hello()"/>
+	</form>
+</body>
+</html>

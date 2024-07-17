@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="httpRequest.js"></script>
+<script type="text/javascript">
+
+	window.onload = function(){
+		sendRequest("member_json.jsp", "", viewInfo, "GET");
+	}
+	
+	function viewInfo(){
+		if(httpRequest.readyState == 4){
+			if(httpRequest.status == 200){
+				const result = eval("(" + httpRequest.responseText + ")");//문자열 => 객체
+				if(result.code == 'success'){
+					const m = result.data.member;
+					const html = '<span>이름: ' + m.name + ", ID: " + m.id + '</span>';
+					
+					const list = document.getElementById('list');
+					list.innerHTML = html;
+				}
+			}
+		}
+		
+	}
+
+
+</script>
+</head>
+<body>
+	<div id="list"></div>
+</body>
+</html>
+
+
+
+
+
+
+
