@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script src="http://code.jquery.com/jquery-3.1.1.js"></script>
+    <script>
+    	// 현재페이지(문서)의 높이 => 윈도우의 크키 + 브라우저 스크롤 위치
+    	// $(window).scroll() => 스크롤이 변경될 때 마다 이벤트가 발생
+    	// $(window).height() => 윈도우 크기
+    	// $(document).height() => 현재페이지(문서)의 높이
+    	// $(window).scrollTop() => 스크롤의 위치값
+    	
+        // 무한 스크롤 부분
+        $(document).ready(function () {
+            // 스크롤 이벤트 발생 시
+            $(window).scroll(function () {
+            	const scrollHeight = $(window).height() + $(window).scrollTop();
+            	const documentHeight = $(document).height();
+            	console.log(scrollHeight);
+            	console.log(documentHeight);
+            	
+            	if(Math.floor(scrollHeight) + 100 > documentHeight){
+            		for (var i = 0; i < 10000000; i++) {
+                        $('<h1>Infinity Scroll</h1>').appendTo('body');
+                    }
+            	}
+            });
+        });
+
+        // 테스트를 위해 내부에 공간을 채워둡니다.
+        $(document).ready(function () {
+            for (var i = 0; i < 20; i++) {
+                $('<h1>Infinity Scroll</h1>').appendTo('body');
+            }
+        });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

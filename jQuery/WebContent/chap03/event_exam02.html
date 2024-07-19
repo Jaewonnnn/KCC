@@ -3,7 +3,16 @@
 <head>
     <script src="http://code.jquery.com/jquery-3.1.1.js"></script>
     <script>
-       
+       // submit : form에게만 사용 가능한 함수
+       $(function(){
+    	   $('#my-form').submit(function(event){
+    		   const name = $('#name').val();
+    		   const password = $('#password').val();
+    		   
+    		   console.log(name + ':' + password);
+    		   event.preventDefault();
+    	   })
+       })
     </script>
 </head>
 <body>

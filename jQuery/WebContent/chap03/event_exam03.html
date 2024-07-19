@@ -3,7 +3,20 @@
 <head>
     <script src="http://code.jquery.com/jquery-3.1.1.js"></script>
     <script>
-       
+       $(function(){
+          $('#all-check').change(function(){
+             if(this.checked){ 
+                //클릭한 이벤트의 checked => 0, ""(빈문자열)이면 false이며, 있으면 true이다.
+                //$('#check-item :checkbox').attr('checked', 'checked');
+                //.attr : setAttribute, getAttribute 합춘것 
+                
+                $('#check-item :checkbox').prop('checked', true);
+                //.prop : true, false로 사용
+             }else{
+                $('#check-item :checkbox').prop('checked', false);
+             }
+          })
+       })
     </script>
 </head>
 <body>
