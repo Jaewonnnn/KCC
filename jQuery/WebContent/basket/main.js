@@ -26,5 +26,6 @@ $(document).ready(function () {
         $('#total-price').text(total.toLocaleString());
         $('.checkout').text(`구매하기 (${$('.cart-item:has(input[type="checkbox"]:checked)').length})`);
     }
+
     calculateTotalPrice();
 });
