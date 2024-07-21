@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>장바구니</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>장바구니</h1>
+        <div class="tab">
+        </div>
+        <div class="cart-items">
+            <div class="cart-item">
+                <input type="checkbox" checked id="checkbox">
+                <img src="iphone.png" alt="아이폰">
+                <div class="item-details">
+                    <p>Apple 정품 아이폰 15 Pro 자급제, 블랙티타늄, 128GB</p>
+                    <span class="price">1,398,500원</span>
+                    <button class="remove">삭제</button>
+                </div>
+                <input type="number" value="1" min="0" class="quantity">
+            </div>
+            <div class="cart-item">
+                <input type="checkbox" checked id="checkbox">
+                <img src="macbook.png" alt="맥북">
+                <div class="item-details">
+                    <p>Apple 2023 맥북 프로 14 M3, 스페이스 그레이, M3 8코어, 10코어 GPU, 512GB, 16GB</p>
+                    <span class="price">2,360,000원</span>
+                    <button class="remove">삭제</button>
+                </div>
+                <input type="number" value="1" min="0" class="quantity">
+            </div>
+        </div>
+        <div class="total">
+            <h2>주문 예상 금액</h2>
+            <p>총 상품 가격: <span id="total-price">0</span>원</p>
+            <button class="checkout">구매하기 (0)</button>
+        </div>
+    </div>
+</body>
+
+</html>
