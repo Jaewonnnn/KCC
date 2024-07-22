@@ -17,7 +17,6 @@ $(document).ready(function () {
     calculateTotalPrice();
   });
 
-  // 체크박스 상태에 따라 총 가격 업데이트
   $('input[type="checkbox"]').change(function () {
     calculateTotalPrice();
   });
