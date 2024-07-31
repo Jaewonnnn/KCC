@@ -7,12 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>JSP 페이지</h1>
-	<%
-/* 	request.getParameter(name)
-	response.sendRedirect(location) */
-	 String name = "홍길동";
-	%>
-	이름 : <%=name %>
+	<ul>
+		<li><a href="template.jsp?body=/include/main.jsp">메인</a></li>
+		<li><a href="template.jsp?body=/include/join.jsp">회원가입</a></li>
+	</ul>
 </body>
 </html>

@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	String code = request.getParameter("page");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,12 +10,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>JSP 페이지</h1>
-	<%
-/* 	request.getParameter(name)
-	response.sendRedirect(location) */
-	 String name = "홍길동";
-	%>
-	이름 : <%=name %>
+	<jsp:forward page="<%=code%>"></jsp:forward>
 </body>
 </html>
