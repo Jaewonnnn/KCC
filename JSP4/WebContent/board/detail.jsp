@@ -21,4 +21,7 @@
 		<li><%= board.getWriter() %></li>
 		<li><%= board.getContents() %></li>
 	</ul>
+	<br><br>
+	
+	<a href="updateForm.jsp?seq=<%= board.getSeq() %>">글수정</a>
 </body>

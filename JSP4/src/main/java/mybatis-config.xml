@@ -6,6 +6,7 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="kosa.model.Board" alias="Board" />
+		<typeAlias type="kosa.model.Search" alias="Search" />
 	</typeAliases>
 
 	<environments default="development">

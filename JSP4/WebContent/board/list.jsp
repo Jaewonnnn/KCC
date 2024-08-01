@@ -1,3 +1,6 @@
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.Map"%>
+<%@page import="kosa.model.Search"%>
 <%@page import="kosa.dao.BoardDao2"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="kosa.model.Board"%>
@@ -7,8 +10,21 @@
     pageEncoding="UTF-8"%>
 
 <%
+	request.setCharacterEncoding("UTF-8");
+	
+/* 	Search search = new Search();
+	search.setArea(request.getParameterValues("area"));
+	search.setSearchKey("%"+ request.getParameter("searchKey") + "%"); */
+	// 아래의 map으로 대체 가능
+	Map map = new HashMap();
+	map.put("area", request.getParameterValues("area"));
+	map.put("searchKey", "%"+ request.getParameter("searchKey") + "%");
+	
+	
     BoardDao2 dao = BoardDao2.getInstance();
-    List<Board> list = dao.listBoard();
+    /* List<Board> list = dao.listBoard(search); */
+    List<Board> list = dao.listBoard(map);
+    
     
     // list가 null인 경우 빈 리스트로 초기화
     if (list == null) {
@@ -47,5 +63,14 @@
             } // for loop 끝
         %>
     </table>
+    <br><br>
+    
+    <form action="list.jsp" method="GET">
+    	<input type="checkbox" name="area" value="title">제목
+    	<input type="checkbox" name="area" value="writer">작성자
+    	<input type="text" name="searchKey" size="10">
+    	<input type="submit" value="검색">
+    	
+    </form>
 </body>
 </html>

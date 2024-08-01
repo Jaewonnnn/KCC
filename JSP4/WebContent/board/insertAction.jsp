@@ -1,4 +1,4 @@
-<%@page import="kosa.dao.BoardDao"%>
+<%@page import="kosa.dao.BoardDao2"%>
 <%@page import="kosa.model.Board"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -12,10 +12,10 @@
 <jsp:setProperty property="*" name="board"/>
 
 <%
-	BoardDao dao = BoardDao.getInstance();
-	int re = dao.insert(board);
+	BoardDao2 dao = BoardDao2.getInstance();
+	int re = dao.insertBoard(board);
 	if (re == 1){
-		response.sendRedirect("/board/list.jsp");
+		response.sendRedirect("JSP4/board/list.jsp");
 	}else{
 		out.println("실패");
 	}
