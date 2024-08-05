@@ -31,10 +31,7 @@ public class LoginFilter implements Filter {
 		httpResponse.sendRedirect(httpRequest.getContextPath() +
 		"/session/loginform.jsp"); return; }
 		
-		
 
-
-		
 		System.out.println("처리했나?");
 		chain.doFilter(httpRequest, httpResponse);
 
