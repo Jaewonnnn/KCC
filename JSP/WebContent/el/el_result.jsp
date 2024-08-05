@@ -1,7 +1,7 @@
 <%@page import="kosa.model.Person"%>
-<%@page import="java.net.URLEncoder"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,14 +9,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-	before : <%= request.getAttribute("name") %><br>
-	after : ${name}<br><br>
+	before: <%= request.getAttribute("name") %><br>
+	after : ${name }<br>
+	
 	
 	before: <%= ((Person)request.getAttribute("person")).getName() %><br>
-	after:${person.name}<br><br>
+	after: ${person.name }<br>
 	
-	before: <%= request.getParameter("fruit") %><br>
-	after: ${param.fruit}
-	
+	before : <%= request.getParameter("fruit") %><br>
+	after : ${param.fruit }
 </body>
-</html>

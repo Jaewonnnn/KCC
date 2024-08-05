@@ -3,13 +3,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-    <%! List<String> list = new ArrayList<String>(); %>
     
     <%
     	request.setCharacterEncoding("utf-8");
     	String product = request.getParameter("product");
+    	
+    	List<String> list = (List)session.getAttribute("productList");
+    	
+    	if(list == null){
+    		list = new ArrayList<String>();
+    		session.setAttribute("productList",list);
+    		/* session에 productList이름으로 뽑아낸 list를 저장한다. */
+    	}
         list.add(product);
-       	session.setAttribute("products", list);
+        	/* product를 list에 추가한다. */
+
     
     %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">

@@ -1,18 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="EUC-KR">
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>JSP í˜ì´ì§€</h1>
+	<h1>JSP ÆäÀÌÁö</h1>
 	<%
-/* 	request.getParameter(name)
-	response.sendRedirect(location) */
-	 String name = "í™ê¸¸ë™";
+		String name = "È«±æµ¿";
 	%>
-	ì´ë¦„ : <%=name %>
+	ÀÌ¸§ : <%= name %>
 </body>
 </html>

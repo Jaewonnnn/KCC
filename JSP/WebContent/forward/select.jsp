@@ -9,12 +9,12 @@
 <body>
 	<form action="control.jsp" method="post">
 		보고싶은 페이지:
-		<select name="page">
+		<select name="code">
 			<option value="a.jsp">A페이지</option>
 			<option value="b.jsp">B페이지</option>
 			<option value="c.jsp">C페이지</option>
 		</select>
-		<input type="submit" value="이동">
+		<input type="submit" value="Go">
 	</form>
 </body>
 </html>

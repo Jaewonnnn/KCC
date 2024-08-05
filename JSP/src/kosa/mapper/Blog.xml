@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+<mapper namespace="kosa.mapper.BlogMapper">
+	<cache />
+	
+	<!-- property가 변수명 -->
+	<resultMap type="Blog" id="blogResult">
+		<id property="id" column="id"/>
+		<result property="title" column="title"/>
+		<result property="content" column="content"/>
+		
+		<association property="author" column="author_id" javaType="Author">
+			<!-- 연관관계 가져오기 associtation -->
+			<id property="author_id" column="author_id"/>
+			<result property="name" column="name"/>
+			<result property="address" column="address"/>	
+		
+		</association>
+		
+	</resultMap>
+	<!-- 2. id는 밑의 select에서 지정한 resultMap과 같게 -->
+	<!-- 3. mybatis-config에서 typeAliases 지정할것 -->
+	<!-- 반복사용할때는 연관관계, 아닐때는 그냥 이어서 ㄱㄱ -->
+	<select id="selectBlog" parameterType="int" resultMap="blogResult">
+	<!-- 1. 밑의 쿼리문을 blogResult로 만들기 -->
+		select 
+			b.id as id, 
+			b.title as title, 
+			b.content as content, 
+			a.author_id as author_id, 
+			a.name as name, 
+			a.address as address <!-- 변수명을 a.이나 b.사용불가 -> 사용하기 쉽게 as로 변경 -->
+    	from blog b, author a
+    	where b.author_id = a.author_id
+    	and id = #{id}
+	
+	
+	</select>
+	
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

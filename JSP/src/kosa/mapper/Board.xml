@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+<mapper namespace="kosa.mapper.BoardMapper">
+	<cache />
+	
+	<select id="listBoard" parameterType="Search" resultType="Board"> <!-- 이걸 맵스테이트먼트 -->
+		select * from board
+		<if test="area != null">
+			<where>
+				<!-- where(title LIKE %JSP% OR writer LIKE %JSP%) -->
+				<!-- 검색내용은 Search.java에 저장되어있다. -->
+				<foreach collection="area" item = "item" open="(" close=")" separator="OR"> <!-- Search.java의 area는 배열이다. -->
+					<!-- item은 체크박스에 따라 제목일수도 글작성자일 수도 있다. -->
+					${item} LIKE #{searchKey}
+					<!-- 동적으로 변하는 변수는 $로 표기해야한다. > item은 title 또는 writer이 들어온다 -->
+					<!-- item에 따라 title, writer가 달라짐 > area라는 테이블안에서 찾는것이나 마찬가지 -->
+				</foreach>
+			</where>
+		</if>
+		order by seq desc
+	</select> <!--  -->
+	<!-- 나중엔 이것만 바꾸게끔 만들어준다. (spring) -->
+	
+	<select id="detailBoard" resultType="Board" parameterType="int">
+		<!-- parameterType은 현재 하나이기때문에 빼도 괜찮다. 여러개 오면 반드시 쓸것 -->
+		select * from board where seq = #{seq}
+		<!-- 쿼리문 마지막에 ;찍지말것 -->
+	</select>
+	
+	<insert id="insertBoard" parameterType="Board">
+		insert into board(seq, title, writer, contents, regdate, hitcount)
+			values(board_seq.nextval, #{title}, #{writer}, #{contents}, sysdate, 0)
+	</insert>
+	
+	<update id="updateBoard" parameterType="Board">
+		update board
+		set title = #{title}, writer = #{writer}, contents = #{contents}
+		where seq = #{seq}
+	</update>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
