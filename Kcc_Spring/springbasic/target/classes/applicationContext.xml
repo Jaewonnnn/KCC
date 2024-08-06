@@ -15,6 +15,7 @@
 	<!-- <bean id="writeService" class="kosa.di.WriteService"> -->
 
 	<!-- <constructor-arg ref="oracleDao"></constructor-arg> -->
+	<!-- name은 주입할 객체의 변수명과 동일해야 함 -->
 	<!-- <property name="dao" ref="mySQLDao"></property> -->
 	<!-- </bean> -->
 </beans>

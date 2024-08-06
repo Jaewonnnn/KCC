@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<!-- 자동으로 dispatcher servlet이 이 파일을 읽는다 -->
+	<!-- webApplicationContext라는 컨테이너를 만들어준다. -->
+	<!-- <bean id="helloController" class="kosa.controller.HelloController"></bean> -->
+	<context:component-scan base-package="kosa" />
+
+	<!-- pre, suf를 통해 경로를 설정해줌 -->
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/view/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg name="sqlSessionFactory" ref="mySqlSessionFactoryBean"></constructor-arg>
+	</bean>
+
+	<bean id="mySqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="myDataSource"></property>
+		<property name="configLocation" value="/WEB-INF/mybatis-config.xml"></property>
+	</bean>
+
+	<!-- DB Setting -->
+	<bean id="myDataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="jdbc/oracle"></property>
+		<property name="resourceRef" value="true"></property>
+	</bean>
+</beans>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+<mapper namespace="kosa.mapper.BoardMapper">
+	<cache />
+	
+	<select id="listBoard" resultType="Board">
+		select * from board
+		order by seq desc
+	</select>
+	
+	<select id="detailBoard" resultType="Board" parameterType="int">
+		<!-- parameterType은 현재 하나이기때문에 빼도 괜찮다. 여러개 오면 반드시 쓸것 -->
+		select * from board where seq = #{seq}
+		<!-- 쿼리문 마지막에 ;찍지말것 -->
+	</select>
+	
+	<insert id="insertBoard" parameterType="Board">
+		insert into board
+			values(board_seq.nextval, #{title}, #{writer}, #{contents}, sysdate, 0)
+	</insert>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

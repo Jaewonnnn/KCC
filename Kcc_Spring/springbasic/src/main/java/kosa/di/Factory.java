@@ -4,7 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 // ApplicationContext.xml을 대신하는 용도로 사용한다.
-//@Configuration // 설정 파일 등록
+// @Configuration // 설정 파일 등록
 public class Factory {
 	@Bean
 	public Dao oracleDao() {
