@@ -34,6 +34,7 @@
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 
+
 	<!-- UTF-8 인코딩 -->
 	<filter>
 		<filter-name>encodingFilter</filter-name>
@@ -47,7 +48,7 @@
 	<!-- 어떤 url에 적용할 것인지 설정 -->
 	<filter-mapping>
 		<filter-name>encodingFilter</filter-name>
+		<servlet-name>appServlet</servlet-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-
 </web-app>

@@ -14,7 +14,7 @@ public class PageDTO {
   private int total;
   private Criteria cri;
 
-  public PageDTO(Criteria cri, int total) {
+  public PageDTO(Criteria cri, int total) { //페이지번호, 페이지 당 글 갯수
 
     this.cri = cri;
     this.total = total;

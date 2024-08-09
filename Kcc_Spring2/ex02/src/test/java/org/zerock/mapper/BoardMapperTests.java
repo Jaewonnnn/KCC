@@ -16,9 +16,10 @@ import lombok.extern.log4j.Log4j;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
-@Log4j
+//스프링 컨테이너 생성
+@Log4j //로그 보이게하기
 public class BoardMapperTests {
-
+	
 	@Autowired
 	private BoardMapper mapper;
 
@@ -26,12 +27,13 @@ public class BoardMapperTests {
 //	public void test() {
 //		mapper.getList().forEach(board -> log.info(board));
 //	}
-
+	
+	
 //	@Test
 //	public void testInsert() {
 //		BoardVO board = new BoardVO();
-//		board.setTitle("새로운 글");
-//		board.setContent("새로작성한 글2");
+//		board.setTitle("새로운글2");
+//		board.setContent("새로작성한글2");
 //		board.setWriter("newUser2");
 //		
 //		mapper.insert(board);
@@ -40,14 +42,16 @@ public class BoardMapperTests {
 //	@Test
 //	public void testInsert() {
 //		BoardVO board = new BoardVO();
-//		board.setTitle("새로운 글3");
-//		board.setContent("새로작성한 글3");
+//		board.setTitle("새로운글3");
+//		board.setContent("새로작성한글3");
 //		board.setWriter("newUser3");
-//
+//		
+////		mapper.insert(board);
 //		mapper.insertSelectKey(board);
 //		log.info(board);
+//		
 //	}
-
+	
 //	@Test
 //	public void testRead() {
 //		BoardVO board = mapper.read(3L);
@@ -56,7 +60,8 @@ public class BoardMapperTests {
 	
 //	@Test
 //	public void testDelete() {
-//		log.info("Delete count: " + mapper.delete(3L));
+//		
+//		log.info("Delete Count: " + mapper.delete(3L));
 //	}
 	
 //	@Test
@@ -68,7 +73,7 @@ public class BoardMapperTests {
 //		board.setWriter("user00");
 //		
 //		int count = mapper.update(board);
-//		log.info("update count : " + count);
+//		log.info("update count: " + count);
 //	}
 	
 	@Test
@@ -78,6 +83,7 @@ public class BoardMapperTests {
 		cri.setAmount(10);
 		
 		List<BoardVO> list = mapper.getListWithPaging(cri);
-		list.forEach(board -> log.info(board));
+		list.forEach(board->log.info(board));
 	}
+	
 }

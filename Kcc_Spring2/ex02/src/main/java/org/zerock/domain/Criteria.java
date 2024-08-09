@@ -10,23 +10,23 @@ import lombok.ToString;
 @Getter
 public class Criteria {
 
-	  private int pageNum;
-	  private int amount;
-	  
-	  private String type;
-	  private String keyword;
-	
-	  public Criteria() {
-	    this(1, 10);
-	  }
-	
-	  public Criteria(int pageNum, int amount) {
-	    this.pageNum = pageNum;
-	    this.amount = amount;
-	  }
-	  
-	  public String[] getTypeArr() {
-	    
-	    return type == null? new String[] {}: type.split("");
-	  }
+  private int pageNum; //페이징 처리 했을때 여기로 받음
+  private int amount; //글 몇개?
+  
+  private String type;
+  private String keyword;
+
+  public Criteria() {
+    this(1, 10);
+  }
+
+  public Criteria(int pageNum, int amount) {
+    this.pageNum = pageNum;
+    this.amount = amount;
+  }
+  
+  public String[] getTypeArr() {
+    
+    return type == null? new String[] {}: type.split("");
+  }
 }
