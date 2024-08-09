@@ -1,5 +1,7 @@
 package org.zerock.controller;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,15 +10,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.zerock.domain.BoardVO;
+import org.zerock.domain.Criteria;
 import org.zerock.service.BoardService;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
+
 @Controller
 @RequestMapping("/board/*")
-@Log4j
 @AllArgsConstructor
+@Log4j
 public class BoardController {
 
 	private BoardService service;
@@ -34,9 +38,9 @@ public class BoardController {
 	}
 	
 	@GetMapping("/list")
-	public void list(Model model) {
+	public void list(Criteria cri, Model model) {
 		log.info("list..................");
-		model.addAttribute("list", service.getList());
+		model.addAttribute("list", service.getList(cri));
 	}
 	
 	@GetMapping({"/get",  "/modify"})
