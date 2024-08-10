@@ -1,19 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
-<title>Insert title here</title>
+<meta charset="UTF-8">
+<title>회원가입</title>
 </head>
 <body>
-	<h1>ȸ������</h1>
-	<form action="/homework/signup" method="post">
-		<label for="id">���̵�: </label> <input type="text" id="id" name="id"
-			required> <br> <label for="pass">�н�����:</label> <input
-			type="password" id="pass" name="pass" required> <br>
-		<button type="submit">ȸ������</button>
+	<h1>회원가입</h1>
+	<form action="/home/signup" method="post">
+		<label for="userId">아이디: </label> 
+		<input type="text" id="userId" name="userId" required> <br> 
+		<label for="password">패스워드:</label> 
+		<input type="password" id="password" name="password" required> <br>
+		<button type="submit">회원가입</button>
 	</form>
-	
 </body>
 </html>

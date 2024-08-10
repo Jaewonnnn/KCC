@@ -1,8 +1,8 @@
-package org.zerock.service;
+package org.zerock.mapper;
 
 import org.zerock.domain.Users;
 
-public interface HomeService {
+public interface HomeMapper {
     Users getUser(Users user);
     int signUp(Users user);
 }
