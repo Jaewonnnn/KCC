@@ -65,7 +65,7 @@ public class HomeController {
     @PostMapping("/addToCart")
     public String addToCart(String product, HttpSession session, Model model) {
         String userId = (String) session.getAttribute("username");
-        log.info("Adding product to cart: " + product + " for user: " + userId);
+        log.info("cart: " + product + " user: " + userId);
         if (userId != null) {
             CartItem cart = new CartItem();
             cart.setUserId(userId);

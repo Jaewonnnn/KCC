@@ -4,13 +4,11 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.zerock.mapper.CartMapper">
 
-    <!-- 장바구니에 상품 추가 -->
     <insert id="addToCart" parameterType="org.zerock.domain.CartItem">
         INSERT INTO cart
         VALUES (cart_seq.nextval, #{userId}, #{productName})
     </insert>
 
-    <!-- 특정 사용자의 장바구니 항목 가져오기 -->
     <select id="getCartItems" parameterType="String" resultType="org.zerock.domain.CartItem">
         SELECT seq AS cartId, userid AS userId, product_name AS productName 
         FROM cart 
