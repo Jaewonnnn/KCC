@@ -4,8 +4,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.zerock.domain.Criteria;
 import org.zerock.domain.ReplyVO;
+import org.zerock.mapper.BoardMapper;
 import org.zerock.mapper.ReplyMapper;
 
 import lombok.extern.log4j.Log4j;
@@ -15,10 +17,17 @@ import lombok.extern.log4j.Log4j;
 public class ReplyServiceImpl implements ReplyService{
 	@Autowired
 	private ReplyMapper mapper;
+	
+	@Autowired
+	private BoardMapper boardMapper;
 
+	@Transactional
 	@Override
 	public int register(ReplyVO vo) {
 		log.info("register.........." + vo);
+		
+		boardMapper.updateReplyCnt(vo.getBno(), 1);
+		
 		return mapper.insert(vo);
 	}
 
@@ -33,10 +42,15 @@ public class ReplyServiceImpl implements ReplyService{
 		log.info("register.........." + vo);
 		return mapper.update(vo);
 	}
-
+	
+	@Transactional
 	@Override
 	public int remove(Long rno) {
 		log.info("register.........." + rno);
+		
+		ReplyVO vo = mapper.read(rno);
+		
+		boardMapper.updateReplyCnt(vo.getBno(), -1);
 		return mapper.delete(rno);
 	}
 
