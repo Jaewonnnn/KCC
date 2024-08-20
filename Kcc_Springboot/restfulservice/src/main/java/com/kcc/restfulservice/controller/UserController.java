@@ -1,8 +1,9 @@
 package com.kcc.restfulservice.controller;
 
-import com.kcc.restfulservice.UserDaoService;
+import com.kcc.restfulservice.bean.Post;
 import com.kcc.restfulservice.bean.User;
 import com.kcc.restfulservice.exception.UserNotFoundException;
+import com.kcc.restfulservice.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.hateoas.EntityModel;
@@ -19,17 +20,17 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 @RestController
 @RequiredArgsConstructor
 public class UserController {
-
-    private final UserDaoService userDaoService;
+    private final UserService userService;
+    //private final UserDaoService userDaoService;
 
     @GetMapping("/users")
     public List<User> retrieveAllUsers() {
-        return userDaoService.findAll();
+        return userService.findAll();
     }
 
     @GetMapping("/users/{id}")
-    public EntityModel<User> retrieveUser(int id) {
-        User user = userDaoService.findOne(id);
+    public EntityModel<User> retrieveUser(@PathVariable int id) {
+        User user = userService.findOne(id);
         if (user == null) {
             throw new UserNotFoundException("id-" + id);
         }
@@ -46,7 +47,7 @@ public class UserController {
 
     @PostMapping("/users")
     public ResponseEntity<User> createUser(@Valid @RequestBody User user) {
-        User savedUser = userDaoService.save(user);
+        User savedUser = userService.save(user);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}")
                 .buildAndExpand(savedUser.getId())
@@ -55,12 +56,25 @@ public class UserController {
         return ResponseEntity.created(location).build();
     }
 
-    @DeleteMapping("/users/{id}")
-    public void deleteUser(@PathVariable int id) {
-        User user = userDaoService.deleteById(id);
-        if (user == null) {
-            throw new UserNotFoundException("id-" + id);
-        }
+    @PostMapping("/users/{id}/posts")
+    public ResponseEntity<Post> createPost(@PathVariable int id, @RequestBody Post post) {
+        userService.savePost(post);
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(post.getId())
+                .toUri();
+
+        return ResponseEntity.created(location).build();
     }
+
+
+
+//    @DeleteMapping("/users/{id}")
+//    public void deleteUser(@PathVariable int id) {
+//        User user = userService.deleteById(id);
+//        if (user == null) {
+//            throw new UserNotFoundException("id-" + id);
+//        }
+//    }
 
 }
