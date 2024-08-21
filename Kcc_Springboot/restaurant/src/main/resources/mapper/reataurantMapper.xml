@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kcc.restaurant.mapper.RestaurantMapper">
+    <resultMap id="restaurantMap" type="Restaurant">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="address" column="address"/>
+        <result property="createdAt" column="created_at"/>
+        <result property="updateAt" column="update_at"/>
+    </resultMap>
+
+    <resultMap id="RestaurantInformationMap" type="RestaurantInformationDto">
+        <id property="id" column="r_id"/>
+        <result property="name" column="name"/>
+        <result property="address" column="address"/>
+        <result property="createdAt" column="r_created_at"/>
+        <result property="updateAt" column="r_update_at"/>
+        <collection property="menus" resultMap="menuMap"/>
+    </resultMap>
+
+    <resultMap id="menuMap" type="restaurantMenu">
+        <id property="id" column="rm_id"/>
+        <result property="restaurantId" column="restaurant_id"/>
+        <result property="name" column="rm_name"/>
+        <result property="price" column="price"/>
+        <result property="createdAt" column="rm_created_at"/>
+        <result property="updateAt" column="rm_updated_at"/>
+    </resultMap>
+
+    <select id="findAllRestaurant" resultMap="restaurantMap">
+        select id, name, address, created_at, update_at from restaurant
+    </select>
+
+    <select id="findOneRestaurantInformation" parameterType="int" resultMap="RestaurantInformationMap">
+        select
+            r.id as r_id, r.name, r.address, r.created_at as r_created_at, r.update_at as r_update_at,
+            rm.id as rm_id, rm.restaurant_id, rm.name as rm_name, rm.price, rm.created_at as rm_created_at, rm.updated_at as rm_updated_at
+        from
+            restaurant r
+                left outer join
+            restaurant_menu rm on r.id = rm.restaurant_id
+        where
+            r.id = #{id}
+    </select>
+
+    <insert id="createRestaurant" parameterType="RestaurantInformationDto">
+        <selectKey keyProperty="id" resultType="int" order="BEFORE">
+            SELECT restaurant_seq.nextval FROM dual
+        </selectKey>
+        INSERT INTO restaurant (id, name, address, created_at, update_at)
+        VALUES (#{id}, #{name}, #{address}, sysdate, sysdate)
+    </insert>
+
+    <insert id="createRestaurantMenu" parameterType="RestaurantMenu">
+        INSERT INTO restaurant_menu (id, restaurant_id, name, price, created_at, updated_at)
+        VALUES (restaurant_menu_seq.nextval, #{restaurantId}, #{name}, #{price}, sysdate, sysdate)
+    </insert>
+
+    <update id="updateRestaurantInformation" parameterType="RestaurantInformationDto">
+        update restaurant
+        set
+            name = #{name},
+            address = #{address},
+            update_at = sysdate
+        where id = #{id}
+    </update>
+
+    <delete id="deleteRestaurantAllMenu" parameterType="int">
+        delete from restaurant_menu where restaurant_id = #{restaurantId}
+    </delete>
+
+    <delete id="deleteRestaurant" parameterType="int">
+        delete from restaurant where id = #{restaurantId}
+    </delete>
+
+    <select id="getReviewAverageScore" parameterType="int" resultType="float">
+        select avg(score) from review where restaurant_id = #{restaurantId}
+    </select>
+
+    <select id="getReviews" parameterType="int" resultType="Review">
+        select id, restaurant_id, content, score, created_At from review
+        where restaurant_id = #{restaurantId}
+    </select>
+
+
+</mapper>
