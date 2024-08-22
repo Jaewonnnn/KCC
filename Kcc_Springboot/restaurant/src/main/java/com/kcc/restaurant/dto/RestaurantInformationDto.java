@@ -1,11 +1,9 @@
 package com.kcc.restaurant.dto;
 
 import com.kcc.restaurant.domain.RestaurantMenu;
-import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 
 import java.util.Date;
 import java.util.List;
