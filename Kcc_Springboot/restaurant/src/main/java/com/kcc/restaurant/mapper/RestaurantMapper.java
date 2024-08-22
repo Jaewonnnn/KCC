@@ -15,8 +15,8 @@ public interface RestaurantMapper {
     public int createRestaurant(RestaurantInformationDto restaurant);
     public int createRestaurantMenu(RestaurantMenu restaurantMenu);
     public void updateRestaurantInformation(RestaurantInformationDto restaurant);
-    public void deleteRestaurantAllMenu(int restaurantId);
-    public void deleteRestaurant(int restaurantId);
+    public int deleteRestaurantAllMenu(int restaurantId);
+    public int deleteRestaurant(int restaurantId);
 
     public float getReviewAverageScore(int restaurantId);
     public List<Review> getReviews(int restaurantId);

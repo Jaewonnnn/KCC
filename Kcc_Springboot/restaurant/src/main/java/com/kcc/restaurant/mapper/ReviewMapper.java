@@ -5,6 +5,6 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface ReviewMapper {
-    public void createReview(Review review);
-    public void deleteReview(int reviewId);
+    public int createReview(Review review);
+    public int deleteReview(int reviewId);
 }

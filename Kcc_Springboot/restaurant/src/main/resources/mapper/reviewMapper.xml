@@ -6,6 +6,9 @@
 <mapper namespace="com.kcc.restaurant.mapper.ReviewMapper">
 
     <insert id="createReview" parameterType="Review">
+        <selectKey keyProperty="id" resultType="int" order="BEFORE">
+            SELECT review_seq.nextval FROM dual
+        </selectKey>
         insert into review
         values(review_seq.nextval,
                #{restaurantId},

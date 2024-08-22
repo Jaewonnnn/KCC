@@ -9,8 +9,8 @@ import java.util.List;
 public interface RestaurantService {
     public List<Restaurant> findAllRestaurant();
     public RestaurantInformationDto findOneRestaurantInformation(int id);
-    public void createRestaurant(RestaurantInformationDto restaurant);
-    public void updateRestaurant(int restaurantId, RestaurantInformationDto restaurant);
-    public void deleteRestaurant(int restaurantId);
+    public RestaurantInformationDto createRestaurant(RestaurantInformationDto restaurant);
+    public int updateRestaurant(int restaurantId, RestaurantInformationDto restaurant) throws Exception;
+    public int deleteRestaurant(int restaurantId) throws Exception;
     public RestaurantReviewDto getReviewAverageScore(int restaurantId);
 }
