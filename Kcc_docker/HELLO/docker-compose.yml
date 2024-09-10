@@ -1,0 +1,8 @@
+version: "3"
+services:
+  redis-server: #server.js에서 client에 host로 설정한 이름과 동일해야 함
+    image: "redis"
+  node-app:
+    build: . #현재 폴더(Dockerfile의 경로)
+    ports:
+      - "5000:8082"
