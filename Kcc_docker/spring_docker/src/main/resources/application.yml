@@ -5,8 +5,8 @@ spring:
   datasource:
     driver-class-name: oracle.jdbc.driver.OracleDriver
     url: jdbc:oracle:thin:@database-1.cd8wycggcv6l.us-east-1.rds.amazonaws.com:1521:XE
-    username: sysdba
-    password: "!dbwodnjs1"
+    username: 
+    password: 
 
 
 mybatis:
